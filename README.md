@@ -1,6 +1,9 @@
 # PokeSynergy
 It's supposed to be a Web App that will probably won't work at all because...
 
+Trello:
+https://trello.com/b/JjQ3LlYs/ipm-project
+
 Projet L3 Informatique
 Le Mans Université
 
