@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Creepster';
+  src: url('/assets/fonts/Creepster-Regular.ttf'); /* Le slash au début est important */
+}
+
 :host {
   --bright-blue: oklch(51.01% 0.274 263.83);
   --electric-violet: oklch(53.18% 0.28 296.97);
@@ -35,7 +40,7 @@ h1 {
   line-height: 100%;
   letter-spacing: -0.125rem;
   margin: 0;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-family: "Creepster", "Comic Sans", cursive;
 }
 p {
   margin: 0;
