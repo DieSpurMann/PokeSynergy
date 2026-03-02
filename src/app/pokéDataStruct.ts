@@ -2,6 +2,7 @@ export interface PokéDataStruct {
     pokedexnumber: number;
     name: string;
     family: string; //Temporary
+    weight: number;
     stats: {
         attack: number;
         defense: number;
@@ -15,4 +16,3 @@ export interface PokéDataStruct {
     talent: string[];
     img: string;
 }
-
