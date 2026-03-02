@@ -29,8 +29,15 @@
     "@angular/forms": "^21.1.0",
     "@angular/platform-browser": "^21.1.0",
     "@angular/router": "^21.1.0",
+    "@types/dotenv": "^8.2.3",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^25.3.3",
+    "axios": "^1.13.5",
+    "dotenv": "^17.3.1",
+    "mongoose": "^9.2.3",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "tsx": "^4.21.0"
   },
   "devDependencies": {
     "@angular/build": "^21.1.0",
