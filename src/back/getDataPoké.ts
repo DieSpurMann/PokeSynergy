@@ -3,7 +3,6 @@ import { PokéDataStruct } from './pokéDataStruct';
 import { fetchPokemonData } from './funcAppelPoke';
 import { connectToDatabase, disconnectFromDatabase, url } from './database';
 import { PokemonModel } from './pokemon';
-import { disconnect } from 'node:cluster';
 
 const apiUrl: string = 'https://pokeapi.co/api/v2/pokemon?limit=1000000&offset=0'; // Commençons par 100 pour tester
 
