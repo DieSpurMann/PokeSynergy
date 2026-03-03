@@ -8,7 +8,7 @@ export const url: string = process.env['DBLINK'] ? process.env['DBLINK'] : '';
 
 export async function connectToDatabase(url: string): Promise<void> {
     try {
-        await mongoose.connect(url);
+        await mongoose.connect(url, {dbName: 'app'});
         console.log("Connected to the database successfully!");
     } catch (error) {
         console.error("Error connecting to the database:", error);
