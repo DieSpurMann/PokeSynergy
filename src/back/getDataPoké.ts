@@ -12,7 +12,7 @@ async function start() {
     const response = await axios.get(apiUrl);
     const rawData = response.data.results;
     const listUrls: string[] = rawData.map((pokemon: { url: string }) => pokemon.url);
-    const listsOfPokemons: Partial<PokéDataStruct>[] = [];
+    const listsOfPokemons: PokéDataStruct[] = [];
 
     // On utilise for...of pour attendre chaque réponse
     for (const url of listUrls) {

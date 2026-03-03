@@ -19,4 +19,4 @@ const PokemonSchema = new Schema({
   talent: [String]
 });
 
-export const PokemonModel = model('Pokemon', PokemonSchema);
+export const PokemonModel = model('Pokemon_temp', PokemonSchema);
