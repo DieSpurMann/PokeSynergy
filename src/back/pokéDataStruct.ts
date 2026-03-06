@@ -1,7 +1,8 @@
 export interface PokéDataStruct {
     pokedexnumber: number;
     name: string;
-    family: string; //Temporary
+    type: string[];
+    talent: string[];
     weight: number;
     stats: {
         attack: number;
@@ -11,8 +12,7 @@ export interface PokéDataStruct {
         specialdefense: number;
         speed: number;
     }
-    type: string[];
-    desc: string;
-    talent: string[];
     img: string;
+    desc: string;
+    family: number | null; //Pointe vers l'id de la pré-évolution
 }
