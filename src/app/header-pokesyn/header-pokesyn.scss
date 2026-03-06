@@ -1,0 +1,24 @@
+.header-pokesyn {
+    margin: 0;
+    padding: 0.5em;
+    color: #FEFCE0;
+    background-color: #3E70CD;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.header-pokesyn > h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    flex: 1;
+}
+
+.header-pokesyn .logo {
+    width: 4em;
+    height: 4em;
+    margin-right: 10px;
+}
