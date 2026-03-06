@@ -18,7 +18,7 @@ async function start() {
     for (const url of listUrls) {
       try {
         const pokemonData = await fetchPokemonData(url);
-        console.log(`Récupéré : ${pokemonData}`);
+        console.log(`Récupéré n°${pokemonData.pokedexnumber} : ${pokemonData}`);
         listsOfPokemons.push(pokemonData);
       } catch (err) {
         console.error(`Erreur sur ${url}`);
