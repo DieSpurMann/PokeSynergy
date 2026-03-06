@@ -2,10 +2,11 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TeamComponent } from './team-component/team-component';
 import { HeaderPokesyn } from './header-pokesyn/header-pokesyn';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TeamComponent, HeaderPokesyn],
+  imports: [RouterOutlet, TeamComponent, HeaderPokesyn, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
