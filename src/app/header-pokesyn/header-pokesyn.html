@@ -1,4 +1,17 @@
 <div class="header-pokesyn">
     <img src="images/pokesynergy.png" alt="PokéSynergy Logo" class="logo">
     <h1>Welcome to PokéSynergy!</h1>
+
+    <button class="burger-btn" (click)="toggleMenu()" [class.open]="isMenuOpen">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="nav-menu" [class.show]="isMenuOpen">
+        <a href="#">Profil</a>
+        <a href="#">Flux d'actualité</a>
+        <a href="#">Équipes</a>
+        <a href="#">Réglages</a>
+    </nav>
 </div>

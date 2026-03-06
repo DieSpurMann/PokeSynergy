@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: flex-start;
     box-sizing: border-box;
+    position: relative;
 }
 
 .header-pokesyn > h1 {
@@ -21,4 +22,53 @@
     width: 4em;
     height: 4em;
     margin-right: 10px;
+}
+
+.burger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    z-index: 1001; /* Doit être au-dessus du menu */
+}
+
+.burger-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #FEFCE0;
+    transition: 0.3s;
+}
+
+/* Animation X */
+.burger-btn.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.burger-btn.open span:nth-child(2) { opacity: 0; }
+.burger-btn.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* --- Style du Menu --- */
+.nav-menu {
+    display: none; /* Caché par défaut */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #3E70CD;
+    width: 200px;
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+/* Affichage quand actif */
+.nav-menu.show {
+    display: flex !important;
+}
+
+.nav-menu a {
+    color: #FEFCE0;
+    padding: 15px;
+    text-decoration: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
