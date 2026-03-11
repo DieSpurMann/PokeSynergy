@@ -12,13 +12,13 @@ async function start() {
     const response = await axios.get(apiUrl);
     const rawData = response.data.results;
     const listUrls: string[] = rawData.map((pokemon: { url: string }) => pokemon.url);
-    const listsOfPokemons: PokéDataStruct[] = [];
+    const listsOfPokemons: Partial<PokéDataStruct>[] = [];
 
     // On utilise for...of pour attendre chaque réponse
     for (const url of listUrls) {
       try {
         const pokemonData = await fetchPokemonData(url);
-        console.log(`Récupéré n°${pokemonData.pokedexnumber} : ${pokemonData}`);
+        console.log(`Récupéré : ${pokemonData}`);
         listsOfPokemons.push(pokemonData);
       } catch (err) {
         console.error(`Erreur sur ${url}`);

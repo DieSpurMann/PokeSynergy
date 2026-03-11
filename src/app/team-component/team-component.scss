@@ -1,0 +1,38 @@
+#team-component
+{
+	background-color: #FEFCE0;
+	color: #000000;
+	position: fixed;
+	top: 5.258em;
+	left: 0;
+	right: 70%;
+	height: 100%;
+	padding: 10px;
+}
+
+#team-header
+{
+	text-align: center;
+}
+
+.pokeslot
+{
+	background-color: #D9D9D9;
+	padding: 1em;
+}
+
+.pokesprite
+{
+	float: left;
+}
+
+.nom-pkmn
+{
+	text-align: right;
+	font-size: 125%;
+}
+
+.pokesprite
+{
+	max-height: 4.5em;
+}

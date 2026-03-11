@@ -6,20 +6,22 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     box-sizing: border-box;
     position: relative;
 }
 
+.header-pokesyn > h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    flex: 1;
+}
 
 .header-pokesyn .logo {
     width: 4em;
     height: 4em;
     margin-right: 10px;
-}
-
-.header-pokesyn > .title {
-    max-width: 15em;
 }
 
 .burger-btn {
