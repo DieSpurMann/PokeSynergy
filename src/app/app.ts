@@ -8,7 +8,7 @@ import { Pokedex } from "./pokedex/pokedex";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TeamComponent, HeaderPokesyn, CommonModule, Pokedex, LoginComponent],
+  imports: [RouterOutlet, TeamComponent, HeaderPokesyn, CommonModule, Pokedex],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
