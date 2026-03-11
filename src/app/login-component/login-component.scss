@@ -1,123 +1,112 @@
-// Variables de couleurs Pokémon
+// Variables
 $yellow-page: #fdfde3;
 $grey-elements: #d1d1d1;
 $dark-text: #333;
-$blue-accent: #6aa7ff; // Ta couleur de focus
+$blue-accent: #6aa7ff;
 
 :host {
   display: block;
   width: 100%;
-  height: calc(100vh - 5em);
+  height: calc(100vh - 5em); 
+  overflow-y: auto; 
 }
 
 .login-wrapper {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background-image: url("/images/background.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
+}
 
-  .login-column {
-    background-color: $yellow-page;
-    width: 24em;
-    min-height: 80%;
-    height: auto;
-    border-left: 0.2em solid #444;
-    border-right: 0.2em solid #444;
+.login-column {
+  background-color: $yellow-page;
+  width: 24em;
+  min-height: 100%;
+  height: auto;
+  box-sizing: border-box;
+  border-left: 0.2em solid #444;
+  border-right: 0.2em solid #444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em 0;
+  box-shadow: 0 0 1em rgba(0,0,0,0.2);
+
+  .title-container {
+    background-color: $grey-elements;
+    padding: 0.6em 2.5em;
+    border: 0.08em solid #bdbdbd;
+    margin-top: 0.5em;
+    margin-bottom: 2em; // Espace sous le titre "Connexion"
+    border-radius: 0.5em;
+    flex-shrink: 0;
+
+    h1 {
+      margin: 0;
+      font-size: 1.4em;
+      font-weight: 600;
+      color: $dark-text;
+    }
+  }
+
+  .form-content {
+    width: 80%;
+    flex-grow: 1; 
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 2em 0;
-    box-shadow: 0 0.5em 1.5em rgba(0,0,0,0.15); // Ombre plus douce pour la colonne
+    justify-content: flex-start; // REMONTÉ : Aligne les éléments vers le haut
+    padding-top: 1em; // Ajuste ce chiffre pour remonter/descendre les champs
 
-    .title-container {
-      background-color: $grey-elements;
-      padding: 0.6em 2.5em;
-      border: 0.08em solid #bdbdbd;
-      margin-top: 0.8em;
-      margin-bottom: 2.5em;
-      border-radius: 0.5em;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5); // Effet de reflet interne
+    .input-group {
+      margin-bottom: 2.5em; // Espace entre Pseudo et Mot de passe
+      text-align: center;
 
-      h1 {
-        margin: 0;
-        font-size: 1.4em;
-        font-weight: 600;
+      label {
+        display: block;
+        font-size: 1.5em;
+        margin-bottom: 0.6em;
         color: $dark-text;
-        letter-spacing: 0.05em;
       }
-    }
 
-    .form-content {
-      width: 80%;
-      flex-grow: 1;
-
-      .input-group {
-        margin-bottom: 2.5em;
+      input {
+        width: 100%;
+        padding: 0.9em;
+        background-color: #f5f5f5;
+        box-sizing: border-box; 
+        border: 0.1em solid #dcdcdc;
+        border-radius: 0.5em;
         text-align: center;
-
-        label {
-          display: block;
-          font-size: 1.5em;
-          margin-bottom: 0.6em;
-          color: $dark-text;
-          font-weight: 500;
-        }
-
-        input {
-          width: 100%;
-          padding: 0.9em;
-          background-color: #f5f5f5;
-          box-sizing: border-box; // Fixe le décalage à droite
-          border: 0.1em solid #dcdcdc;
-          border-radius: 0.5em;
-          text-align: center;
-          font-size: 1em;
-          transition: all 0.2s ease;
-
-          &:focus {
-            border-color: $blue-accent;
-            background-color: #fff;
-            box-shadow: 0 0 0 0.2em rgba($blue-accent, 0.2);
-            outline: none;
-          }
-        }
+        font-size: 1em;
       }
     }
+  }
 
-    .button-footer {
-      width: 100%;
-      display: flex;
-      justify-content: space-evenly;
-      padding-bottom: 2em;
+  .button-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 1em;
+    padding-bottom: 1.5em;
+    flex-shrink: 0;
 
-      .btn-grey {
-        background-color: $grey-elements;
-        color: $dark-text;
-        border: 0.1em solid #b0b0b0;
-        border-radius: 0.6em;
-        padding: 0.7em 2em;
-        font-size: 1em;
-        font-weight: 600;
-        text-transform: uppercase; // Style plus "bouton de jeu"
-        letter-spacing: 0.05em;
-        cursor: pointer;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 0.2em 0 #999; // Ombre "épaisse" style bouton physique
-
-        &:hover {
-          background-color: #e0e0e0;
-          transform: translateY(-0.1em);
-          box-shadow: 0 0.3em 0 #999;
-        }
-
-        &:active {
-          transform: translateY(0.15em);
-          box-shadow: 0 0.05em 0 #999; // S'aplatit quand on clique
-        }
+    .btn-grey {
+      background-color: $grey-elements;
+      border: 0.1em solid #b0b0b0;
+      border-radius: 0.6em;
+      padding: 0.7em 2em;
+      font-weight: 600;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 0.2em 0 #999;
+      
+      &:active {
+        transform: translateY(0.1em);
+        box-shadow: 0 0.1em 0 #999;
       }
     }
   }
