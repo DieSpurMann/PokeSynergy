@@ -2,12 +2,17 @@
     <img src="images/pokesynergy.png" alt="PokéSynergy Logo" class="logo">
     <img src="images/pokesynergytitle.png" alt="PokéSynergy Title" class="title">
 
-    <button class="burger-btn" (click)="toggleMenu()" [class.open]="isMenuOpen">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
+    <div class="right-actions">
+        <img src="images/pp-default.png" alt="Profil" class="profile-pic">
+        
+        <button class="burger-btn" (click)="toggleMenu()" [class.open]="isMenuOpen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
+    </div>
+    
     <nav class="nav-menu" [class.show]="isMenuOpen">
         <a href="#">Profil</a>
         <a href="#">Flux d'actualité</a>
