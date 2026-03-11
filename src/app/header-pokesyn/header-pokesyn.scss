@@ -1,27 +1,48 @@
+/* Définition des couleurs thématiques pour assurer la cohérence visuelle */
+$header-blue: #3E70CD;
+$header-yellow: #FEFCE0;
+
+/* Conteneur principal du header */
 .header-pokesyn {
     margin: 0;
     padding: 0.5em;
-    color: #FEFCE0;
-    background-color: #3E70CD;
+    color: $header-yellow;
+    background-color: $header-blue;
+    /* Alignement flexible des éléments (Logo à gauche, Actions à droite) */
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    /* Garantit que le padding n'augmente pas la largeur totale */
     box-sizing: border-box;
+    /* Position relative pour servir de point d'ancrage au menu absolu */
     position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+    /* Logo du site */
+    .logo {
+        width: 4em;
+        height: 4em;
+        margin-right: 10px;
+        object-fit: contain; // Garde les proportions de l'image sans la déformer
+    }
+
+    /* Titre ou bannière textuelle */
+    .title {
+        max-width: 15em;
+        height: auto;
+    }
 }
 
-
-.header-pokesyn .logo {
-    width: 4em;
-    height: 4em;
-    margin-right: 10px;
+/* Regroupement des interactions à droite (Menu + Profil) */
+.right-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.2em; 
 }
 
-.header-pokesyn > .title {
-    max-width: 15em;
-}
-
+/* Bouton du menu mobile (lignes horizontales) */
 .burger-btn {
     background: none;
     border: none;
@@ -30,43 +51,84 @@
     flex-direction: column;
     gap: 5px;
     padding: 5px;
-    z-index: 1001; /* Doit être au-dessus du menu */
+    /* S'assure que le bouton reste au-dessus du menu une fois ouvert */
+    z-index: 1001;
+    transition: transform 0.2s;
+
+    /* Design des barres du burger */
+    span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: $header-yellow;
+        transition: 0.3s;
+        border-radius: 2px;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    /* Transformation des 3 barres en icône "X" via la classe .open */
+    &.open span:nth-child(1) { 
+        transform: translateY(8px) rotate(45deg); 
+    }
+    &.open span:nth-child(2) { 
+        opacity: 0; // Masque la barre centrale
+    }
+    &.open span:nth-child(3) { 
+        transform: translateY(-8px) rotate(-45deg); 
+    }
 }
 
-.burger-btn span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: #FEFCE0;
-    transition: 0.3s;
+/* Avatar de l'utilisateur */
+.profile-pic {
+    width: 3.2em;
+    height: 3.2em;
+    border-radius: 50%; // Forme circulaire
+    border: 0.15em solid $header-yellow;
+    object-fit: cover; // Coupe l'image pour remplir le cercle proprement
+    cursor: pointer;
+    background-color: transparent; 
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px rgba(254, 252, 224, 0.5);
+    }
 }
 
-/* Animation X */
-.burger-btn.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-.burger-btn.open span:nth-child(2) { opacity: 0; }
-.burger-btn.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-/* --- Style du Menu --- */
+/* Menu de navigation déroulant */
 .nav-menu {
-    display: none; /* Caché par défaut */
+    display: none; // Masqué par défaut
     position: absolute;
-    top: 100%;
+    top: 100%; // Se place juste en dessous du header
     right: 0;
-    background-color: #3E70CD;
-    width: 200px;
+    background-color: $header-blue;
+    width: 220px;
     flex-direction: column;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-}
+    border-bottom-left-radius: 10px;
 
-/* Affichage quand actif */
-.nav-menu.show {
-    display: flex !important;
-}
+    /* Affichage déclenché par JavaScript */
+    &.show {
+        display: flex !important;
+    }
 
-.nav-menu a {
-    color: #FEFCE0;
-    padding: 15px;
-    text-decoration: none;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    /* Liens du menu */
+    a {
+        color: $header-yellow;
+        padding: 15px 20px;
+        text-decoration: none;
+        font-weight: 500;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        transition: background 0.2s;
+
+        /* Effet de décalage au survol */
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding-left: 25px; 
+        }
+    }
 }

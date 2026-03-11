@@ -1,0 +1,125 @@
+// Définition des variables de thème pour la réutilisabilité et la maintenance
+$yellow-page: #fdfde3;
+$grey-elements: #d1d1d1;
+$dark-text: #333;
+$blue-accent: #6aa7ff;
+
+// Sélecteur spécial pour les Web Components (Angular/Stencil/etc.)
+:host {
+  display: block;
+  width: 100%;
+  /* Soustrait la hauteur du header (5em) pour éviter le double scroll */
+  height: calc(100vh - 5em); 
+  overflow-y: auto; // Active le défilement vertical si le contenu dépasse
+}
+
+/* Conteneur de l'arrière-plan */
+.login-wrapper {
+  width: 100%;
+  min-height: 100%;
+  background-image: url("/images/background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; // L'image couvre tout l'écran sans se déformer
+  background-attachment: fixed; // L'image reste fixe lors du scroll
+  display: flex;
+  justify-content: center; // Centre la colonne de connexion horizontalement
+}
+
+/* Colonne centrale contenant le formulaire */
+.login-column {
+  background-color: $yellow-page;
+  width: 24em;
+  min-height: 100%;
+  height: auto;
+  box-sizing: border-box;
+  /* Bordures latérales pour créer un effet de "page" ou de journal */
+  border-left: 0.2em solid #444;
+  border-right: 0.2em solid #444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em 0;
+  box-shadow: 0 0 1em rgba(0,0,0,0.2);
+
+  /* Encadré pour le titre "Connexion" */
+  .title-container {
+    background-color: $grey-elements;
+    padding: 0.6em 2.5em;
+    border: 0.08em solid #bdbdbd;
+    margin-top: 0.5em;
+    margin-bottom: 2em; 
+    border-radius: 0.5em;
+    flex-shrink: 0; // Empêche le titre de s'écraser si la fenêtre est petite
+
+    h1 {
+      margin: 0;
+      font-size: 1.4em;
+      font-weight: 600;
+      color: $dark-text;
+    }
+  }
+
+  /* Zone principale du formulaire */
+  .form-content {
+    width: 80%;
+    flex-grow: 1; // Prend tout l'espace disponible pour pousser le footer vers le bas
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; // Aligne les champs vers le haut
+    padding-top: 1em;
+
+    /* Groupe Label + Input */
+    .input-group {
+      margin-bottom: 2.5em; 
+      text-align: center;
+
+      label {
+        display: block;
+        font-size: 1.5em;
+        margin-bottom: 0.6em;
+        color: $dark-text;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.9em;
+        background-color: #f5f5f5;
+        box-sizing: border-box; 
+        border: 0.1em solid #dcdcdc;
+        border-radius: 0.5em;
+        text-align: center; // Centre le texte saisi par l'utilisateur
+        font-size: 1em;
+      }
+    }
+  }
+
+  /* Zone des boutons en bas de page */
+  .button-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly; // Répartit les boutons avec un espacement égal
+    padding-top: 1em;
+    padding-bottom: 1.5em;
+    flex-shrink: 0;
+
+    /* Style du bouton gris avec effet "pressable" */
+    .btn-grey {
+      background-color: $grey-elements;
+      border: 0.1em solid #b0b0b0;
+      border-radius: 0.6em;
+      padding: 0.7em 2em;
+      font-weight: 600;
+      text-transform: uppercase;
+      cursor: pointer;
+      /* Simule une épaisseur de bouton (effet 3D) */
+      box-shadow: 0 0.2em 0 #999;
+      
+      /* Effet d'enfoncement lors du clic */
+      &:active {
+        transform: translateY(0.1em); // Descend le bouton
+        box-shadow: 0 0.1em 0 #999; // Réduit l'ombre pour simuler la pression
+      }
+    }
+  }
+}
