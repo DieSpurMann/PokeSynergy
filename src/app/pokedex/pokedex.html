@@ -1,1 +1,24 @@
-<ul class="Pkmnlist">pokedex works!</ul>
+<div class="grid">
+  @for (poke of pokemons; track poke.apiId) {
+    <div class="pokemon-card">
+      <img [src]="poke.image" [alt]="poke.nom">
+      <h3>{{ poke.nom }}</h3>
+    </div>
+  } @empty {
+    <p>Aucun Pokémon trouvé...</p>
+  }
+</div>
+
+@if (isLoading) {
+  <div class="loader">
+    Chargement de nouveaux Pokémon...
+  </div>
+}
+
+@if (!hasMore) {
+  <div class="end-message">
+    Bravo, tu as tout vu !
+  </div>
+}
+
+<div #sentinel style="height: 10px;"></div>
