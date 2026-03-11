@@ -5,10 +5,11 @@ import { HeaderPokesyn } from './header-pokesyn/header-pokesyn';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from "./login-component/login-component";
 import { Pokedex } from "./pokedex/pokedex";
+import { Error404Component } from "./error-404-component/error-404-component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TeamComponent, HeaderPokesyn, CommonModule, Pokedex],
+  imports: [RouterOutlet, TeamComponent, HeaderPokesyn, CommonModule, Pokedex, Error404Component],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
