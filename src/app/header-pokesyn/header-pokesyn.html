@@ -3,16 +3,19 @@
     <img src="images/pokesynergytitle.png" alt="PokéSynergy Title" class="title">
 
     <div class="right-actions">
-        <img src="images/pp-default.png" alt="Profil" class="profile-pic">
-        
+        <img 
+            src="images/pp-default.png" 
+            alt="Profil" 
+            class="profile-pic" 
+            routerLink="/login">
+
         <button class="burger-btn" (click)="toggleMenu()" [class.open]="isMenuOpen">
             <span></span>
             <span></span>
             <span></span>
         </button>
-
     </div>
-    
+
     <nav class="nav-menu" [class.show]="isMenuOpen">
         <a href="#">Profil</a>
         <a href="#">Flux d'actualité</a>
