@@ -3,6 +3,7 @@ $yellow-page: #fdfde3;
 $grey-elements: #d1d1d1;
 $dark-text: #333;
 $blue-accent: #6aa7ff;
+$blue-pokesyn: #3E70CD; // Ajouté pour le lien d'inscription
 
 // Sélecteur spécial pour les Web Components (Angular/Stencil/etc.)
 :host {
@@ -98,9 +99,11 @@ $blue-accent: #6aa7ff;
   .button-footer {
     width: 100%;
     display: flex;
-    justify-content: space-evenly; // Répartit les boutons avec un espacement égal
+    flex-direction: column; // Changé en colonne pour empiler bouton + lien
+    align-items: center;     // Centre les éléments horizontalement
+    gap: 1.5em;              // Espace entre le bouton et le lien
     padding-top: 1em;
-    padding-bottom: 1.5em;
+    padding-bottom: 2em;
     flex-shrink: 0;
 
     /* Style du bouton gris avec effet "pressable" */
@@ -119,6 +122,22 @@ $blue-accent: #6aa7ff;
       &:active {
         transform: translateY(0.1em); // Descend le bouton
         box-shadow: 0 0.1em 0 #999; // Réduit l'ombre pour simuler la pression
+      }
+    }
+
+    /* Lien vers la création de compte */
+    .register-link {
+      font-size: 0.9em;
+      color: $dark-text;
+
+      a {
+        color: $blue-pokesyn;
+        text-decoration: none;
+        font-weight: 700;
+        
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

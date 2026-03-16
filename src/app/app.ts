@@ -9,7 +9,7 @@ import { Error404Component } from "./error-404-component/error-404-component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TeamComponent, HeaderPokesyn, CommonModule, Pokedex, Error404Component],
+  imports: [RouterOutlet, TeamComponent, HeaderPokesyn, CommonModule, Pokedex, Error404Component, LoginComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
