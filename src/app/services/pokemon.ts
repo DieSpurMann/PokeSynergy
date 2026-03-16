@@ -11,7 +11,7 @@ export class PokemonService {
   constructor(private http: HttpClient) { }
 
   // On typage avec 'any[]' ou ton interface Pokemon si tu l'as créée
-  getPokemons(page: number, limit: number = 20): Observable<any[]> {
+  getPokemons(page: number = 0, limit: number = 20): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}?page=${page}&limit=${limit}`);
   }
 }

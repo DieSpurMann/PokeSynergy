@@ -19,4 +19,4 @@ const PokemonSchema = new Schema({
   family: { type: Number, default: null } //Pointe vers l'id de la pré-évolution
 });
 
-export const PokemonModel = model('Pokemon_temp', PokemonSchema);
+export const PokemonModel = model('Pokemon', PokemonSchema);
