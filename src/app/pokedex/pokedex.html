@@ -1,17 +1,17 @@
 <div class="pokemon-container">
-  @if (pokemonList$ | async; as list) {
-    @if (list.length > 0) {
-      <ul>
-        @for (p of list; track p._id) {
-          <li>
-            <img [src]="p.img" [alt]="p.name" class="title">
-          </li>
-        }
-      </ul>
-    } @else {
-      <p>The Pokédex is currently empty.</p>
+  <ul>
+    @for (p of pokemonList(); track p._id) {
+      <li>
+        <img [src]="p.img" [alt]="p.name" class="pokeimg">
+        <br/>
+        <span>{{ p.name }}</span>
+      </li>
     }
-  } @else {
-    <div class="loader">Searching the tall grass for Pokémon...</div>
-  }
+  </ul>
+
+  <div #scrollSentinel class="sentinel">
+    @if (isLoading) {
+      <div class="loader">Loading more Pokémon...</div>
+    }
+  </div>
 </div>
