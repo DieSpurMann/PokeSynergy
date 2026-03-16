@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-login-component',
-   imports: [
+  selector: 'app-register-component',
+  imports: [
     CommonModule, 
     RouterModule
   ],
-  templateUrl: './login-component.html',
-  styleUrl: './login-component.scss',
+  templateUrl: './register-component.html',
+  styleUrl: './register-component.scss',
 })
-export class LoginComponent {
+export class RegisterComponent {
 
 }

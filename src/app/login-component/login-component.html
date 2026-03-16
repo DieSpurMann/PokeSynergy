@@ -2,24 +2,26 @@
   <div class="login-column">
     
     <div class="title-container">
-      <h1>Connexion</h1>
+      <h1>CONNEXION</h1>
     </div>
 
-    <div class="form-content">
+    <form class="form-content">
       <div class="input-group">
-        <label>Pseudo</label>
-        <input type="text" placeholder="Écrire ici">
+        <label for="username">PSEUDO DRESSEUR</label>
+        <input type="text" id="username" name="username">
       </div>
 
       <div class="input-group">
-        <label>Mot de passe</label>
-        <input type="password" placeholder="Écrire ici">
+        <label for="password">MOT DE PASSE</label>
+        <input type="password" id="password" name="password">
       </div>
-    </div>
+    </form>
 
     <div class="button-footer">
-      <button type="button" class="btn-grey">Annuler</button>
-      <button type="submit" class="btn-grey">Confirmer</button>
+      <button type="submit" class="btn-grey">Se connecter</button>
+      <div class="register-link">
+        <p>Nouveau dresseur ? <a routerLink="/register">Crée ton compte ici !</a></p>
+      </div>
     </div>
 
   </div>
