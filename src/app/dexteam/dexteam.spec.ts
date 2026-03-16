@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterOutlet } from '@angular/router';
 
-import { TeamComponent } from './team-component';
+import { Dexteam } from './dexteam';
 
-describe('TeamComponent', () => {
-  let component: TeamComponent;
-  let fixture: ComponentFixture<TeamComponent>;
+describe('Dexteam', () => {
+  let component: Dexteam;
+  let fixture: ComponentFixture<Dexteam>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TeamComponent]
+      imports: [Dexteam]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TeamComponent);
+    fixture = TestBed.createComponent(Dexteam);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

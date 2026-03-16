@@ -1,0 +1,18 @@
+// app/dexteam/dexteam.scss
+
+.dexteam-wrapper {
+  display: flex;
+  // On décale tout le contenu vers le bas pour laisser la place au header fixe
+  // 5.258em correspond au 'top' que tu as mis dans ton TeamComponent
+  padding-top: 5.258em; 
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #D4E3FC;
+}
+
+app-pokedex {
+  flex: 1;
+  // On décale le Pokédex vers la droite pour ne pas qu'il soit sous la sidebar
+  margin-left: 30%; 
+  width: 70%;
+}
