@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
+import cors from 'cors';
 import swaggerJsdoc from 'swagger-jsdoc';
 import { connectToDatabase, url } from '../../back/database';
 import { PokemonModel } from '../../back/pokemon';
@@ -11,10 +12,16 @@ dotenv.config({ path: 'utils.conf' });
 const app = express();
 
 // Middleware
+app.use(cors());
 app.use(express.json());
 app.use(morgan('dev')); // Morgan pour voir les requêtes passer
 
-// Configuration Swagger
+// Configuration Swagger + API
+const PORT: number = process.env['PORT'] ? parseInt(process.env['PORT']) : 3000;
+connectToDatabase(url).then(() => {
+  console.log("DB connectée !");
+  app.listen(PORT, () => console.log(`Serveur sur http://localhost:${PORT}`));
+});
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 /**
@@ -58,6 +65,9 @@ app.get('/api/pokemons', async (req, res) => {
     const page: number = req.query['page'] ? parseInt( req.query['page'] as string) : 0;
     const limit: number = req.query['limit'] ? parseInt( req.query['limit'] as string) : 20;
 
+    const count = await PokemonModel.countDocuments();
+    console.log(`Nombre total de Pokémon en DB : ${count}`);
+
     const pokemons = await PokemonModel.find()
       .skip(page * limit) // On saute ceux des pages précédentes
       .limit(limit);      // On n'en prend que 'limit'
@@ -66,10 +76,4 @@ app.get('/api/pokemons', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Erreur lors du chargement" });
   }
-});
-
-const PORT: number = process.env['PORT'] ? parseInt(process.env['PORT']) : 3000;
-connectToDatabase(url).then(() => {
-  console.log("DB connectée !");
-  app.listen(PORT, () => console.log(`Serveur sur http://localhost:${PORT}`));
 });

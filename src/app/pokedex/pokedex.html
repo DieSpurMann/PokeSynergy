@@ -1,1 +1,17 @@
-<ul class="Pkmnlist">pokedex works!</ul>
+<div class="pokemon-container">
+  <ul>
+    @for (p of pokemonList(); track p._id) {
+      <li>
+        <img [src]="p.img" [alt]="p.name" class="pokeimg">
+        <br/>
+        <span>{{ p.name }}</span>
+      </li>
+    }
+  </ul>
+
+  <div #scrollSentinel class="sentinel">
+    @if (isLoading) {
+      <div class="loader">Loading more Pokémon...</div>
+    }
+  </div>
+</div>

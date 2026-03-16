@@ -1,0 +1,57 @@
+// pokedex.scss
+
+.pokemon-container {
+  max-width: 1200px; // Centers the grid on large screens
+  margin: 0 auto;
+  padding: 20px;
+
+  ul {
+    display: grid;
+    // This creates exactly 5 columns of equal width
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 20px; // Space between the cards
+    list-style: none;
+    padding: 0;
+
+    li {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s ease-in-out;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .pokeimg {
+        width: 100%;
+        max-height: 128px; // Limits the height of the image
+        max-width: 128px; // Keeps sprites from getting too huge
+        display: block;
+        margin: 0 auto 10px;
+      }
+
+      span {
+        font-weight: bold;
+        text-transform: capitalize;
+        color: #333;
+      }
+    }
+  }
+}
+
+// Responsive: Drop to 3 per line on tablets, 2 on mobile
+@media (max-width: 1024px) {
+  .pokemon-container ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .pokemon-container ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
