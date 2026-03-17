@@ -28,19 +28,16 @@ export class LoginComponent {
   ) {}
 
   onLogin() {
-    // On envoie les identifiants au service
     this.authService.login(this.credentials).subscribe({
       next: (res: any) => {
-        // Succès : res contient le message et les infos du dresseur
+        localStorage.setItem('userPseudo', res.user.pseudo);
+        localStorage.setItem('userEmail', res.user.email);
+
         alert("Ravi de te revoir, " + res.user.pseudo + " !");
-        
-        // Redirection vers le pokedex (ou ta page d'accueil)
         this.router.navigate(['/pokedex']); 
       },
       error: (err) => {
-        // Erreur : on affiche le message d'erreur renvoyé par le serveur
-        console.error("Erreur de connexion", err);
-        alert("Email ou mot de passe incorrect, dresseur !");
+        alert("Email ou mot de passe incorrect !");
       }
     });
   }

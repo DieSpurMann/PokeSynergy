@@ -14,8 +14,14 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderPokesyn {
   isMenuOpen: boolean = false;
+
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
     console.log('Le menu est ouvert ?', this.isMenuOpen);
+  }
+
+  // Ajoute cette fonction pour que le HTML sache si on est connecté
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('userPseudo');
   }
 }

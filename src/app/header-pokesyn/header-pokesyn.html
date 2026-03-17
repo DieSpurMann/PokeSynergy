@@ -3,11 +3,13 @@
     <img src="images/pokesynergytitle.png" alt="PokéSynergy Title" class="title" routerLink="/pokedex">
 
     <div class="right-actions">
-        <img 
-            src="images/pp-default.png" 
-            alt="Profil" 
-            class="profile-pic" 
-            routerLink="/login">
+        <a *ngIf="isLoggedIn()" routerLink="/profile" class="profile-link">
+            <img src="images/pp-default.png" alt="Profil" class="profile-pic" routerLink="/login">
+        </a>
+
+        <a *ngIf="!isLoggedIn()" routerLink="/login" class="login-button">
+            <img src="images/pp-default.png" alt="Profil" class="profile-pic" routerLink="/login">
+        </a>
 
         <button class="burger-btn" (click)="toggleMenu()" [class.open]="isMenuOpen">
             <span></span>
