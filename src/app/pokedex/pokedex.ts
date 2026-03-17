@@ -1,8 +1,9 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core';
 import { PokemonService } from '../services/pokemon';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs'; // Add this
 import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 // Inside your class:
 
@@ -19,6 +20,7 @@ export class Pokedex implements OnInit, AfterViewInit {
   page = 0;
   limit = 30;
   isLoading = false;
+  private router = inject(Router);
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -54,5 +56,11 @@ export class Pokedex implements OnInit, AfterViewInit {
     }, { threshold: 0.1 });
 
     observer.observe(this.sentinel.nativeElement);
+  }
+
+  onPokemonClick(p: any) {
+    this.router.navigate(['/pokemon', p.pokedexnumber], { 
+      state: { pokemon: p } 
+    });
   }
 }

@@ -4,9 +4,11 @@ import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
 import cors from 'cors';
 import swaggerJsdoc from 'swagger-jsdoc';
-import { connectToDatabase, url } from '../../back/database';
-import { PokemonModel } from '../../back/pokemon';
+import { connectToDatabase, url } from '../back/database';
+import { PokemonModel } from '../back/pokemon';
 import { swaggerDocs } from './config/swagger';
+import getEvoPokeRoutes from './routes/getEvoPoke.routes';
+import pokebyidRoutes from './routes/pokebyid.routes';
 
 dotenv.config({ path: 'utils.conf' });
 const app = express();
@@ -15,6 +17,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev')); // Morgan pour voir les requêtes passer
+app.use('/api', getEvoPokeRoutes); // On ajoute les routes d'évolution
+app.use('/api', pokebyidRoutes);
 
 // Configuration Swagger + API
 const PORT: number = process.env['PORT'] ? parseInt(process.env['PORT']) : 3000;
