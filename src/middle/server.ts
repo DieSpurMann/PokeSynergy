@@ -4,8 +4,8 @@ import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
 import cors from 'cors';
 import swaggerJsdoc from 'swagger-jsdoc';
-import { connectToDatabase, url } from '../../back/database';
-import { PokemonModel } from '../../back/pokemon';
+import { connectToDatabase, url } from '../back/database';
+import { PokemonModel } from '../back/pokemon';
 import { swaggerDocs } from './config/swagger';
 
 dotenv.config({ path: 'utils.conf' });
