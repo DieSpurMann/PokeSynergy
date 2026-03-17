@@ -16,7 +16,7 @@ const options: swaggerJsdoc.Options = {
     ],
   },
   // ATTENTION : Le chemin est relatif à la racine où tu lances le projet (là où est ton package.json)
-  apis: ['./src/app/middle/*.ts', './src/app/middle/routes/*.ts'], 
+  apis: ['./src/middle/*.ts', './src/middle/routes/*.ts'], 
 };
 
 export const swaggerDocs = swaggerJsdoc(options);

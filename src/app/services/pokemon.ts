@@ -14,4 +14,12 @@ export class PokemonService {
   getPokemons(page: number = 0, limit: number = 20): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}?page=${page}&limit=${limit}`);
   }
+
+  getEvolutionChain(pokedexId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/evolution-chain/${pokedexId}`);
+  }
+
+  getPokemonById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/id/${id}`);
+  }
 }
