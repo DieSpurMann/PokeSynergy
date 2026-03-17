@@ -7,6 +7,7 @@ import swaggerJsdoc from 'swagger-jsdoc';
 import { connectToDatabase, url } from '../back/database';
 import { PokemonModel } from '../back/pokemon';
 import { swaggerDocs } from './config/swagger';
+import { UserModel } from '../back/user';
 import getEvoPokeRoutes from './routes/getEvoPoke.routes';
 import pokebyidRoutes from './routes/pokebyid.routes';
 
@@ -79,5 +80,89 @@ app.get('/api/pokemons', async (req, res) => {
     res.json(pokemons);
   } catch (error) {
     res.status(500).json({ error: "Erreur lors du chargement" });
+  }
+});
+
+/**
+ * @openapi
+ * /api/register:
+ *   post:
+ *     summary: Inscription d'un nouveau dresseur
+ *     tags:
+ *       - Auth
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               pseudo:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               mdp:
+ *                 type: string
+ *     responses:
+ *       '201':
+ *         description: Dresseur créé avec succès
+ */
+app.post('/api/register', async (req, res) => {
+  try {
+    const { pseudo, email, mdp } = req.body;
+    const newUser = new UserModel({ pseudo, email, mdp });
+    await newUser.save();
+    res.status(201).json({ message: "Dresseur enregistré !" });
+  } catch (error: any) {
+    if (error.code === 11000) {
+      res.status(400).json({ error: "Email ou Pseudo déjà utilisé." });
+    } else {
+      res.status(500).json({ error: "Erreur lors de l'inscription" });
+    }
+  }
+});
+
+/**
+ * @openapi
+ * /api/login:
+ *   post:
+ *     summary: Connexion d'un dresseur
+ *     tags:
+ *       - Auth
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               mdp:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Connexion réussie
+ */
+app.post('/api/login', async (req, res) => {
+  try {
+    const { email, mdp } = req.body;
+    const user = await UserModel.findOne({ email: email });
+
+    if (!user) {
+      return res.status(404).json({ error: "Dresseur non trouvé." });
+    }
+
+    
+    if (user.mdp !== mdp) {
+      return res.status(401).json({ error: "Mot de passe incorrect." });
+    }
+
+    return res.status(200).json({ 
+      message: "Connexion réussie !", 
+      user: { pseudo: user.pseudo, email: user.email } 
+    });
+  } catch (error) {
+    return res.status(500).json({ error: "Erreur lors de la connexion." });
   }
 });
