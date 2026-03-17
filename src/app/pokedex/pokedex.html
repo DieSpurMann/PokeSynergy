@@ -1,7 +1,7 @@
 <div class="pokemon-container">
   <ul>
     @for (p of pokemonList(); track p._id) {
-      <li>
+      <li (click)="onPokemonClick(p)" style="cursor: pointer;">
         <img [src]="p.img" [alt]="p.name" class="pokeimg">
         <br/>
         <span>{{ p.name }}</span>

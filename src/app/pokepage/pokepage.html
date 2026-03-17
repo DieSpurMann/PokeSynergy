@@ -1,0 +1,28 @@
+<div class="pokepage-wrapper">
+  
+  @if (pokemon(); as p) {
+    <div class="main-card">
+      <img [src]="p.img" [alt]="p.name" class="main-sprite">
+      <h1>{{ p.name }}</h1>
+      <p>N° {{ p.pokedexId }}</p>
+    </div>
+
+    @if (evolutionChain().length > 0) {
+      <div class="family-section">
+        <h2>Lignée Évolutive</h2>
+        <div class="evo-row">
+          @for (evo of evolutionChain(); track evo._id) {
+            <div class="evo-node" (click)="onEvolutionClick(evo)" style="cursor: pointer;">
+              <img [src]="evo.img" [alt]="evo.name">
+              <p>{{ evo.name }}</p>
+            </div>
+            @if (!$last) { <span class="arrow">➔</span> }
+          }
+        </div>
+      </div>
+    }
+  } @else {
+    <div class="loader">Chargement du Pokémon...</div>
+  }
+
+</div>

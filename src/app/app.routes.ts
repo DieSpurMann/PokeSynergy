@@ -5,11 +5,13 @@ import { RegisterComponent } from './register-component/register-component';
 import { Pokedex } from './pokedex/pokedex'
 import { TeamComponent } from './team-component/team-component';
 import { Dexteam } from './dexteam/dexteam';
+import { Pokepage } from './pokepage/pokepage';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'pokedex', component: Dexteam },
+  { path: 'pokemon/:id', component: Pokepage },
   { path: '**', component: Error404Component }
 ];
