@@ -25,7 +25,7 @@ app.use('/api', pokebyidRoutes);
 const PORT: number = process.env['PORT'] ? parseInt(process.env['PORT']) : 3000;
 connectToDatabase(url).then(() => {
   console.log("DB connectée !");
-  app.listen(PORT, () => console.log(`Serveur sur http://localhost:${PORT}`));
+  app.listen(PORT, '0.0.0.0',() => console.log(`Serveur sur http://192.168.1.100:${PORT}`));
 });
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
