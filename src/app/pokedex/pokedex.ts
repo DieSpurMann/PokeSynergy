@@ -1,15 +1,13 @@
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { PokemonService } from '../services/pokemon';
 import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs'; // Add this
+import { Observable } from 'rxjs';
 import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-// Inside your class:
-
 @Component({
   selector: 'app-pokedex',
-  standalone: true, // Ensure it's standalone if using imports
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './pokedex.html',
   styleUrl: './pokedex.scss',
