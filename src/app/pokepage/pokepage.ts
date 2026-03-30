@@ -3,11 +3,12 @@ import { Component, OnInit, signal, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonService } from '../services/pokemon';
 import { CommonModule } from '@angular/common';
+import { TypeLogoPipe } from '../pipes/type-logo-pipe';
 
 @Component({
   selector: 'app-pokepage',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TypeLogoPipe],
   templateUrl: './pokepage.html',
   styleUrl: './pokepage.scss'
 })
@@ -44,4 +45,7 @@ export class Pokepage implements OnInit {
   onEvolutionClick(evo: any) {
     this.router.navigate(['/pokemon', evo.pokedexnumber]);
   }
+
+  capitalize(str: string): string {
+    return str.charAt(0).toUpperCase() + str.slice(1);}
 }

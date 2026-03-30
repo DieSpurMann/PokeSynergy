@@ -1,0 +1,21 @@
+export const TypeLogo: Record<string, string> = {
+    "bug": "https://www.pokepedia.fr/images/a/a9/Miniature_Type_Insecte_EV.png",
+    "dark": "https://www.pokepedia.fr/images/b/bc/Miniature_Type_T%C3%A9n%C3%A8bres_EV.png",
+    "dragon": "https://www.pokepedia.fr/images/3/3d/Miniature_Type_Dragon_EV.png",
+    "electric": "https://www.pokepedia.fr/images/6/6d/Miniature_Type_%C3%89lectrik_EV.png",
+    "fairy": "https://www.pokepedia.fr/images/5/58/Miniature_Type_F%C3%A9e_EV.png",
+    "fighting": "https://www.pokepedia.fr/images/9/96/Miniature_Type_Combat_EV.png",
+    "fire": "https://www.pokepedia.fr/images/c/c7/Miniature_Type_Feu_EV.png",
+    "flying": "https://www.pokepedia.fr/images/9/99/Miniature_Type_Vol_EV.png",
+    "ghost": "https://www.pokepedia.fr/images/4/43/Miniature_Type_Spectre_EV.png",
+    "grass": "https://www.pokepedia.fr/images/d/d9/Miniature_Type_Plante_EV.png",
+    "ground": "https://www.pokepedia.fr/images/4/40/Miniature_Type_Sol_EV.png",
+    "ice": "https://www.pokepedia.fr/images/e/e7/Miniature_Type_Glace_EV.png",
+    "normal": "https://www.pokepedia.fr/images/b/bf/Miniature_Type_Normal_EV.png",
+    "poison": "https://www.pokepedia.fr/images/1/1c/Miniature_Type_Poison_EV.png",
+    "psychic": "https://www.pokepedia.fr/images/8/81/Miniature_Type_Psy_EV.png",
+    "rock": "https://www.pokepedia.fr/images/f/fe/Miniature_Type_Roche_EV.png",
+    "steel": "https://www.pokepedia.fr/images/2/27/Miniature_Type_Acier_EV.png",
+    "stellar": "https://www.pokepedia.fr/images/0/08/Miniature_Type_Stellaire_EV.png",
+    "water": "https://www.pokepedia.fr/images/3/3d/Miniature_Type_Eau_EV.png"
+}

@@ -3,8 +3,21 @@
   @if (pokemon(); as p) {
     <div class="main-card">
       <img [src]="p.img" [alt]="p.name" class="main-sprite">
-      <h1>{{ p.name }}</h1>
-      <p>N° {{ p.pokedexId }}</p>
+      <h1>{{ capitalize(p.name) }}</h1>
+      <h2>N°{{ p.pokedexnumber }}</h2>
+      <div class="types">
+          @for (type of p.type; track type) {
+          <div class="type-badge">
+            <img [src]="type | typeLogo" [alt]="type" class="type-logo">
+          </div>
+        }
+      </div>
+
+    </div>
+
+    <div class="info-section">
+      <h2>Informations</h2>
+      <p><strong>Description:</strong> {{ p.desc }}</p>
     </div>
 
     @if (evolutionChain().length > 0) {
@@ -14,7 +27,7 @@
           @for (evo of evolutionChain(); track evo._id) {
             <div class="evo-node" (click)="onEvolutionClick(evo)" style="cursor: pointer;">
               <img [src]="evo.img" [alt]="evo.name">
-              <p>{{ evo.name }}</p>
+              <p>{{ capitalize(evo.name) }}</p>
             </div>
             @if (!$last) { <span class="arrow">➔</span> }
           }
