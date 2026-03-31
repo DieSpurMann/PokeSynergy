@@ -1,21 +1,56 @@
-<div class="profile-container" *ngIf="dresseur">
-  <div class="profile-card">
-    <div class="avatar-circle">
-      <img src="assets/trainer-icon.png" alt="Avatar">
-    </div>
+<div class="profile-container">
+  <div class="trainer-card">
     
-    <h2>Profil du Dresseur</h2>
-    
-    <div class="info-group">
-      <label>Pseudo</label>
-      <p>{{ dresseur.pseudo }}</p>
+    <div class="card-header">
+      <span class="card-title">CARTE DE DRESSEUR</span>
+      <span class="card-id">ID: #00{{ dresseur?.pseudo?.length || '00' }}</span>
     </div>
 
-    <div class="info-group">
-      <label>Email</label>
-      <p>{{ dresseur.email }}</p>
+    <div class="card-content">
+      <div class="avatar-section">
+        <div class="avatar-frame">
+          <img [src]="dresseur?.avatarUrl || 'images/pp-default.png'" alt="Avatar dresseur">
+        </div>
+        
+        <div class="badges-container">
+          <div class="badges-row">
+            <div class="badge-slot earned"></div>
+            <div class="badge-slot earned"></div>
+            <div class="badge-slot earned"></div>
+            <div class="badge-slot"></div>
+          </div>
+          <div class="badges-row">
+            <div class="badge-slot"></div>
+            <div class="badge-slot"></div>
+            <div class="badge-slot"></div>
+            <div class="badge-slot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-group">
+          <label>NOM / PSEUDO</label>
+          <p class="info-value">{{ dresseur?.pseudo || '---' }}</p>
+        </div>
+
+        <div class="info-group">
+          <label>E-MAIL ENREGISTRÉ</label>
+          <p class="info-value email-text">{{ dresseur?.email || 'non renseigné' }}</p>
+        </div>
+        
+        <div class="info-group">
+          <label>RANG</label>
+          <p class="info-value rank-text">Dresseur Novice</p>
+        </div>
+      </div>
     </div>
 
-    <button (click)="logout()" class="btn-logout">Se déconnecter</button>
+    <div class="card-footer">
+      <button class="btn-logout" (click)="logout()">
+        QUITTER LA SESSION
+      </button>
+    </div>
+
   </div>
 </div>
