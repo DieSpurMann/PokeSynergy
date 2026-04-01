@@ -138,7 +138,7 @@ app.post('/api/login', async (req, res) => {
     return res.status(200).json({ 
       message: "Connexion réussie !", 
       user: { 
-        id: user._id, 
+        uid: user._id, 
         pseudo: user.pseudo, 
         email: user.email 
       } 
