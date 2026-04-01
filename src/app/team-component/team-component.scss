@@ -52,6 +52,42 @@
   }
 }
 
+.actions-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
+  .save-button {
+    width: 100%;
+    padding: 12px;
+    background: #4CAF50; // Vert succès
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+
+    &:hover:not(:disabled) {
+      background: #45a049;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+}
+
 .pokeslot {
   display: flex;
   align-items: center;

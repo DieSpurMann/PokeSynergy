@@ -11,6 +11,7 @@ import { UserModel } from '../back/user';
 import getEvoPokeRoutes from './routes/getEvoPoke.routes';
 import pokebyidRoutes from './routes/pokebyid.routes';
 import teamRoutes from './routes/team.routes';
+import teamLoad from './routes/teamload.routes';
 
 dotenv.config({ path: 'utils.conf' });
 const app = express();
@@ -22,6 +23,7 @@ app.use(morgan('dev'));
 app.use('/api', getEvoPokeRoutes);
 app.use('/api', pokebyidRoutes);
 app.use('/api', teamRoutes); // Routes pour les équipes
+app.use('/api', teamLoad);
 
 // Configuration Swagger + API
 const PORT: number = process.env['PORT'] ? parseInt(process.env['PORT']) : 3000;
