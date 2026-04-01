@@ -32,7 +32,7 @@ const router = Router();
  *       500:
  *         description: Erreur serveur
  */
-router.post('/teams', async (req: Request, res: Response) => {
+router.post('/teams/save', async (req: Request, res: Response) => {
   try {
     const { user, name, pokemons } = req.body;
     if (pokemons.length > 6) {

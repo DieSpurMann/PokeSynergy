@@ -56,7 +56,7 @@ router.get('/teams', async (req, res) => {
 
     const teams = await TeamModel.find()
       .skip(page * limit)
-      .limit(limit);
+      .limit(limit).populate('pokemons');       
 
     res.json(teams);
   } catch (error) {
@@ -124,7 +124,7 @@ router.get('/teams/user/:userId', async (req, res) => {
 
     const teams = await TeamModel.find({user: userId })
       .skip(page * limit)
-      .limit(limit);
+      .limit(limit).populate('pokemons');
 
     res.json(teams);
   } catch (error) {

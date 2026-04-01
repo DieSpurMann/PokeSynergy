@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DragDropModule, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
@@ -12,14 +12,28 @@ import { TeamService, TeamPayload } from '../services/team';
   templateUrl: './team-component.html',
   styleUrl: './team-component.scss',
 })
-export class TeamComponent {
+export class TeamComponent implements OnInit {
   // Ce tableau contiendra les objets Pokémon que tu glisses
   teamName: string = '';
   selectedPokemons: any[] = [];
+  myTeams: any[] = [];
 
   constructor(
     private teamService: TeamService
   ) {}
+
+  ngOnInit() {
+    this.loadUserTeams();
+  }
+
+  loadUserTeams() {
+    const user = localStorage.getItem('userId');
+    if (user) {
+      this.teamService.getTeamsByUser(user).subscribe(teams => {
+        this.myTeams = teams;
+      });
+    }
+  }
 
   // Cette fonction gère l'arrivée du Pokémon
   onDrop(event: CdkDragDrop<any[]>) {
@@ -49,9 +63,38 @@ export class TeamComponent {
       error: (err) => console.error(err)
     });
   }
+  // src/app/team-component/team-component.ts
+  onTeamSelected(event: any) {
+      const teamId = event.target.value;
+      
+      if (!teamId) {
+          // Reset pour une nouvelle équipe
+          this.selectedPokemons = [];
+          this.teamName = '';
+          return;
+      }
+    
+      // On cherche l'équipe dans notre liste locale chargée au ngOnInit
+      const team = this.myTeams.find(t => t._id === teamId);
+      
+      if (team) {
+          this.teamName = team.name;
+          // Comme on a fait .populate() sur le back, team.pokemons est déjà une liste d'objets !
+          this.selectedPokemons = [...team.pokemons]; 
+      }
+  }
 
   // Pour supprimer un Pokémon de la liste en cliquant dessus
   retirerPokemon(index: number) {
     this.selectedPokemons.splice(index, 1);
+  }
+
+  // Cette fonction permet de cliquer sur une équipe existante 
+  // pour la remettre dans l'éditeur de drag-and-drop
+  editTeam(team: any) {
+    this.teamName = team.name;
+    // Si ton backend a fait un .populate('pokemons'), tu auras les objets complets
+    this.selectedPokemons = [...team.pokemons]; 
+    console.log(team);
   }
 }

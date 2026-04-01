@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 export interface TeamPayload {
   user: string;
   name: string;
-  pokemons: string[]; // Un simple tableau d'IDs
+  pokemons: any[]; // Un simple tableau d'IDs
 }
 
 @Injectable({
@@ -17,6 +17,10 @@ export class TeamService {
   constructor(private http: HttpClient) { }
 
   saveTeam(teamData: TeamPayload): Observable<any> {
-    return this.http.post(this.apiUrl, teamData);
+    return this.http.post(this.apiUrl+'/save', teamData);
+  }
+
+  getTeamsByUser(userId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/user/${userId}`);
   }
 }

@@ -11,6 +11,23 @@
                class="team-name-input">
     </div>
      
+	<div class="saved-teams-container">
+    <h3>Mes Équipes Enregistrées</h3>
+    
+    @if (myTeams.length === 0) {
+      <p>Aucune équipe trouvée.</p>
+    }
+
+    <div class="team-selector-container">
+        <label for="team-select">Choisir une équipe :</label>
+        <select id="team-select" (change)="onTeamSelected($event)" class="showdown-select">
+            <option value="">-- Nouvelle Équipe --</option>
+            @for (team of myTeams; track team._id) {
+                <option [value]="team._id">{{ team.name }}</option>
+            }
+        </select>
+    </div>
+
     <h2 id="team-header">Équipe ({{selectedPokemons.length}}/6)</h2>
 
     @for (slot of [0, 1, 2, 3, 4, 5]; track slot) {
