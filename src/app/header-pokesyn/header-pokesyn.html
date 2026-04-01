@@ -19,7 +19,11 @@
     </div>
 
     <nav class="nav-menu" [class.show]="isMenuOpen">
-        <a href="#">Profil</a>
+        @if (isLoggedIn()) {
+            <a routerLink="/profile" (click)="toggleMenu()">Profil</a>
+        } @else {
+            <a routerLink="/login" (click)="toggleMenu()">Profil</a>
+        }
         <a href="#">Flux d'actualité</a>
         <a href="#">Équipes</a>
         <a href="#">Réglages</a>
