@@ -1,0 +1,19 @@
+// Dans un nouveau fichier back/team.ts ou similaire
+import { Schema, model, Document, Types } from 'mongoose';
+
+export interface ITeam extends Document {
+  user: Types.ObjectId;
+  name: string;
+  pokemons: Types.ObjectId[];
+}
+
+const TeamSchema = new Schema<ITeam>({
+  user: { type: Types.ObjectId, ref: 'user', required: true },
+  name: { type: String, required: true },
+  pokemons: [{ 
+        type: Types.ObjectId, 
+        ref: 'Pokemon' 
+    }]
+});
+
+export const TeamModel = model<ITeam>('Team', TeamSchema);

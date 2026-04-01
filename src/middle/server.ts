@@ -10,6 +10,7 @@ import { swaggerDocs } from './config/swagger';
 import { UserModel } from '../back/user';
 import getEvoPokeRoutes from './routes/getEvoPoke.routes';
 import pokebyidRoutes from './routes/pokebyid.routes';
+import teamRoutes from './routes/team.routes';
 
 dotenv.config({ path: 'utils.conf' });
 const app = express();
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(morgan('dev')); // Morgan pour voir les requêtes passer
 app.use('/api', getEvoPokeRoutes); // On ajoute les routes d'évolution
 app.use('/api', pokebyidRoutes);
+app.use('/api', teamRoutes); // Routes pour les équipes
 
 // Configuration Swagger + API
 const PORT: number = process.env['PORT'] ? parseInt(process.env['PORT']) : 3000;
