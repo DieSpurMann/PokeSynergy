@@ -1,15 +1,13 @@
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { PokemonService } from '../services/pokemon';
 import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs'; // Add this
+import { Observable } from 'rxjs';
 import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-// Inside your class:
-
 @Component({
   selector: 'app-pokedex',
-  standalone: true, // Ensure it's standalone if using imports
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './pokedex.html',
   styleUrl: './pokedex.scss',
@@ -27,11 +25,11 @@ export class Pokedex implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.loadMore(); // Load the first batch
   }
-
+  
   loadMore(): void {
     if (this.isLoading) return;
     this.isLoading = true;
-
+    
     this.pokemonService.getPokemons(this.page, this.limit).subscribe({
       next: (newData) => {
         // Append new pokemon to the existing signal array
