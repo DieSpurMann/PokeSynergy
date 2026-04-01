@@ -88,6 +88,35 @@
   }
 }
 
+/* src/app/team-component/team-component.scss */
+.team-selector-container {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  label {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: bold;
+  }
+
+  .showdown-select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+
+    &:focus {
+      border-color: #ff1f1f;
+      outline: none;
+    }
+  }
+}
+
 .pokeslot {
   display: flex;
   align-items: center;
