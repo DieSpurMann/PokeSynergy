@@ -25,11 +25,11 @@ export class Pokedex implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.loadMore(); // Load the first batch
   }
-
+  
   loadMore(): void {
     if (this.isLoading) return;
     this.isLoading = true;
-
+    
     this.pokemonService.getPokemons(this.page, this.limit).subscribe({
       next: (newData) => {
         // Append new pokemon to the existing signal array
