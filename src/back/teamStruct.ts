@@ -4,12 +4,14 @@ import { Schema, model, Document, Types } from 'mongoose';
 export interface ITeam extends Document {
   user: Types.ObjectId;
   name: string;
+  date: number;
   pokemons: Types.ObjectId[];
 }
 
 const TeamSchema = new Schema<ITeam>({
   user: { type: Types.ObjectId, ref: 'user', required: true },
   name: { type: String, required: true },
+  date: { type: Number, default: Date.now() },
   pokemons: [{ 
         type: Types.ObjectId, 
         ref: 'Pokemon' 

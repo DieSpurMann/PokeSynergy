@@ -39,9 +39,9 @@ router.post('/teams', async (req: Request, res: Response) => {
       return res.status(400).json({ error: "Une équipe ne peut pas contenir plus de 6 Pokémon." });
     }
     const newTeam = new TeamModel({
-      user,
-      name,
-      pokemons
+      user: user,
+      name: name,
+      pokemons: pokemons
     });
 
     await newTeam.save();
