@@ -26,4 +26,12 @@
         </div>
         <br>
     }
+
+	<div class="actions-container">
+        <button class="save-button" 
+                (click)="saveTeam()" 
+                [disabled]="selectedPokemons.length === 0">
+            💾 Enregistrer l'Équipe
+        </button>
+    </div>
 </div>
