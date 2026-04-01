@@ -1,10 +1,20 @@
 <div class="pokemon-container">
-  <ul>
+  <ul 
+    cdkDropList 
+    #pokedexList="cdkDropList"
+    [cdkDropListConnectedTo]="['teamList']" 
+    [cdkDropListData]="pokemonList()">
+    
     @for (p of pokemonList(); track p._id) {
-      <li (click)="onPokemonClick(p)" style="cursor: pointer;">
-        <img [src]="p.img" [alt]="p.name" class="pokeimg">
+      <li 
+        (click)="onPokemonClick(p)" 
+        style="cursor: pointer;"
+        cdkDrag
+        [cdkDragData]="p"> <img [src]="p.img" [alt]="p.name" class="pokeimg">
         <br/>
         <span>{{ p.name }}</span>
+
+        <div class="poke-placeholder" *cdkDragPlaceholder></div>
       </li>
     }
   </ul>

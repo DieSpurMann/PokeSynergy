@@ -1,32 +1,37 @@
-<div id="team-component">
-	<h2 id="team-header">Équipe</h2>
-	<div class="pokeslot">
-		<img class="pokesprite" alt="PokéSprite 1">
-		<p class="nom-pkmn">Pokéslot 1</p>
-	</div>
-	<br>
-	<div class="pokeslot">
-		<img class="pokesprite" alt="PokéSprite 2">
-		<p class="nom-pkmn">Pokéslot 2</p>
-	</div>
-	<br>
-	<div class="pokeslot">
-		<img class="pokesprite" alt="PokéSprite 3">
-		<p class="nom-pkmn">Pokéslot 3</p>
-	</div>
-	<br>
-	<div class="pokeslot">
-		<img class="pokesprite" alt="PokéSprite 4">
-		<p class="nom-pkmn">Pokéslot 4</p>
-	</div>
-	<br>
-	<div class="pokeslot">
-		<img class="pokesprite" alt="PokéSprite 5">
-		<p class="nom-pkmn">Pokéslot 5</p>
-	</div>
-	<br>
-	<div class="pokeslot">
-		<img class="pokesprite" alt="PokéSprite 6">
-		<p class="nom-pkmn">Pokéslot 6</p>
-	</div>
+<div id="team-component" 
+     cdkDropList 
+     id="teamList" 
+     [cdkDropListData]="selectedPokemons" 
+     (cdkDropListDropped)="onDrop($event)">
+
+	 <div class="team-name-container">
+        <input type="text" 
+               [(ngModel)]="teamName" 
+               placeholder="Nom de l'équipe..." 
+               class="team-name-input">
+    </div>
+     
+    <h2 id="team-header">Équipe ({{selectedPokemons.length}}/6)</h2>
+
+    @for (slot of [0, 1, 2, 3, 4, 5]; track slot) {
+        <div class="pokeslot">
+            @if (selectedPokemons[slot]) {
+                <img class="pokesprite" [src]="selectedPokemons[slot].img" [alt]="selectedPokemons[slot].name">
+                <p class="nom-pkmn">{{ selectedPokemons[slot].name }}</p>
+                <button (click)="retirerPokemon(slot)" style="color: red;">X</button>
+            } @else {
+                <img class="pokesprite" alt="Vide" style="opacity: 0.3;">
+                <p class="nom-pkmn">Pokéslot {{ slot + 1 }} (Vide)</p>
+            }
+        </div>
+        <br>
+    }
+
+	<div class="actions-container">
+        <button class="save-button" 
+                (click)="saveTeam()" 
+                [disabled]="selectedPokemons.length === 0">
+            💾 Enregistrer l'Équipe
+        </button>
+    </div>
 </div>

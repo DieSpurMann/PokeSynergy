@@ -1,38 +1,99 @@
-#team-component
-{
-	background-color: #FEFCE0;
-	color: #000000;
-	position: fixed;
-	top: 5.258em;
-	left: 0;
-	right: 70%;
-	height: 100%;
-	padding: 10px;
+@font-face {
+  font-family: 'Poppins';
+  src: url('../../assets/fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-#team-header
-{
-	text-align: center;
+:host {
+  display: block; // Important pour le sticky
+  position: sticky;
+  top: 20px;
 }
 
-.pokeslot
-{
-	background-color: #D9D9D9;
-	padding: 1em;
+.team-name-container {
+  margin-bottom: 15px;
+
+  .team-name-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background: rgba(255, 255, 255, 0.5);
+
+    &:focus {
+      border-color: #ff1f1f; // Rouge Pokémon au clic
+      background: white;
+    }
+  }
 }
 
-.pokesprite
-{
-	float: left;
+#team-component {
+  width: 280px;
+  background: #FEFCE0;
+  backdrop-filter: blur(12px); // Effet flou transparent
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 200px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+
+  #team-header {
+    color: #333;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ff1f1f; // Rouge Pokémon
+    padding-bottom: 10px;
+  }
 }
 
-.nom-pkmn
-{
-	text-align: right;
-	font-size: 125%;
+.pokeslot {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+  padding: 8px 15px;
+  height: 60px;
+  background: rgba(240, 240, 240, 0.5);
+  border-radius: 12px;
+  border: 2px dashed #ccc;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #ff1f1f;
+    transform: scale(1.02);
+  }
+
+  &.filled {
+    border: 2px solid #4CAF50; // Vert si occupé
+    background: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  .pokesprite {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+  }
+
+  .nom-pkmn {
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #444;
+    text-transform: capitalize;
+  }
 }
 
-.pokesprite
-{
-	max-height: 4.5em;
+// L'animation quand on survole avec un Pokémon
+.cdk-drop-list-receiving {
+  background: rgba(255, 31, 31, 0.1) !important;
+  border: 2px solid #ff1f1f !important;
 }

@@ -31,6 +31,7 @@ export class LoginComponent {
       next: (res: any) => {
         localStorage.setItem('userPseudo', res.user.pseudo);
         localStorage.setItem('userEmail', res.user.email);
+        localStorage.setItem('userId', res.user.uid);
 
         alert("Ravi de te revoir, " + res.user.pseudo + " !");
         this.router.navigate(['/pokedex']); 

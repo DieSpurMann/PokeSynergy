@@ -141,6 +141,9 @@ app.post('/api/register', async (req, res) => {
  *                 type: string
  *               mdp:
  *                 type: string
+ *               uid:
+ *                 type: string
+ *
  *     responses:
  *       '200':
  *         description: Connexion réussie
@@ -161,7 +164,7 @@ app.post('/api/login', async (req, res) => {
 
     return res.status(200).json({ 
       message: "Connexion réussie !", 
-      user: { pseudo: user.pseudo, email: user.email } 
+      user: { pseudo: user.pseudo, email: user.email, uid: user._id } 
     });
   } catch (error) {
     return res.status(500).json({ error: "Erreur lors de la connexion." });

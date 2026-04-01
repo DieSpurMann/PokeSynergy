@@ -2,17 +2,23 @@
 
 .dexteam-wrapper {
   display: flex;
-  // On décale tout le contenu vers le bas pour laisser la place au header fixe
-  // 5.258em correspond au 'top' que tu as mis dans ton TeamComponent
-  padding-top: 5.258em; 
+  align-items: flex-start; // INDISPENSABLE : permet aux enfants d'avoir leur propre hauteur
+  gap: 0;
+  position: relative;
   min-height: 100vh;
-  box-sizing: border-box;
-  background-color: #D4E3FC;
+  width: 100%;
+  padding: 0;
 }
 
 app-pokedex {
   flex: 1;
-  // On décale le Pokédex vers la droite pour ne pas qu'il soit sous la sidebar
-  margin-left: 30%; 
   width: 70%;
+}
+
+app-team-component {
+  width: 40%;
+  height: 100vh;
+  padding: 20px;
+  display: block; 
+  background: #FEFCE0;
 }
