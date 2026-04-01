@@ -78,7 +78,6 @@ router.get('/pokemons/evolution-chain/:id', async (req, res): Promise<void> => {
     // 2. Récupérer tous les descendants de cette racine
     // On cherche tous les Pokémon qui appartiennent à cette lignée
     // Pour simplifier, on peut chercher récursivement ou utiliser un champ commun
-    // Si vous n'avez que le lien 'family', voici une approche récursive simple :
     const familyChain = [];
     familyChain.push(root);
 
@@ -96,7 +95,5 @@ router.get('/pokemons/evolution-chain/:id', async (req, res): Promise<void> => {
     res.status(500).json({ error: "Erreur lors du calcul de la lignée" });
   }
 });
-
-// Ajoute ici tes autres routes (family, evolution-chain, etc.)
 
 export default router;

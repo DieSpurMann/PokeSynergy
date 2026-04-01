@@ -4,7 +4,7 @@ import { fetchPokemonData } from './funcAppelPoke';
 import { connectToDatabase, disconnectFromDatabase, url } from './database';
 import { PokemonModel } from './pokemon';
 
-const apiUrl: string = 'https://pokeapi.co/api/v2/pokemon?limit=1000000&offset=0'; // Commençons par 100 pour tester
+const apiUrl: string = 'https://pokeapi.co/api/v2/pokemon?limit=1000000&offset=0';
 
 async function start() {
   try {
@@ -14,7 +14,6 @@ async function start() {
     const listUrls: string[] = rawData.map((pokemon: { url: string }) => pokemon.url);
     const listsOfPokemons: PokéDataStruct[] = [];
 
-    // On utilise for...of pour attendre chaque réponse
     for (const url of listUrls) {
       try {
         const pokemonData = await fetchPokemonData(url);

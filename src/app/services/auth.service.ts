@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
     providedIn: 'root'
 })
 export class AuthService {
-    private apiUrl = 'http://localhost:3000/api'; // Vérifie ton PORT dans utils.conf
+    private apiUrl = 'http://localhost:3000/api';
 
     constructor(private http: HttpClient) {}
 

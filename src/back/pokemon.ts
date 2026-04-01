@@ -16,7 +16,7 @@ const PokemonSchema = new Schema({
   },
   img: String,
   desc: String,
-  family: { type: Number, default: null } //Pointe vers l'id de la pré-évolution
+  family: { type: Number, default: null } 
 });
 
 export const PokemonModel = model('Pokemon', PokemonSchema);

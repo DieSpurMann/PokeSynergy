@@ -20,7 +20,6 @@ export class HeaderPokesyn {
     console.log('Le menu est ouvert ?', this.isMenuOpen);
   }
 
-  // Ajoute cette fonction pour que le HTML sache si on est connecté
   isLoggedIn(): boolean {
     return !!localStorage.getItem('userPseudo');
   }

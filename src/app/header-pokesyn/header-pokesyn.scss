@@ -1,4 +1,3 @@
-/* Définition des couleurs thématiques pour assurer la cohérence visuelle */
 $header-blue: #3E70CD;
 $header-yellow: #FEFCE0;
 
@@ -97,7 +96,7 @@ $header-yellow: #FEFCE0;
     }
 
     &:active {
-        transform: scale(0.95); // Petit retour haptique visuel au clic
+        transform: scale(0.95);
     }
 }
 

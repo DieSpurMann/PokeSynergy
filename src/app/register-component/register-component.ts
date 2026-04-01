@@ -26,14 +26,12 @@ export class RegisterComponent {
       return;
     }
 
-    // 3. Prépare les données pour ton API Node
     const data = {
       pseudo: this.dresseur.pseudo,
       email: this.dresseur.email,
       mdp: this.dresseur.password
     };
 
-    // 4. APPELLE TON SERVICE (C'est l'étape manquante !)
     this.authService.register(data).subscribe({
       next: (res) => {
         alert("Bienvenue " + this.dresseur.pseudo + " ! Ton compte est enregistré.");
