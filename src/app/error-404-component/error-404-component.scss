@@ -1,4 +1,4 @@
-// --- Variables de thème ---
+
 $yellow-page: #fdfde3;
 $grey-elements: #d1d1d1;
 $dark-text: #333;
@@ -6,26 +6,26 @@ $dark-text: #333;
 :host {
   display: block;
   width: 100%;
-  height: calc(100vh - 5em); // On déduit la hauteur du header (5em)
-  overflow-y: auto; // Permet de scroller si l'écran est trop petit (ex: zoom)
+  height: calc(100vh - 5em);
+  overflow-y: auto;
 }
 
 .login-wrapper {
   width: 100%;
-  min-height: 100%; // S'assure que le fond couvre tout l'écran
+  min-height: 100%;
   background-image: url("/images/background.png"); 
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-attachment: fixed; // Le fond ne bouge pas pendant le scroll
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
 }
 
 .login-column {
   background-color: $yellow-page;
-  width: 24em; // Largeur fixe pour l'aspect "colonne GameBoy"
-  min-height: 100%; // S'étire jusqu'en bas
+  width: 24em;
+  min-height: 100%;
   height: auto;
   box-sizing: border-box;
   border-left: 0.2em solid #444;
@@ -43,7 +43,7 @@ $dark-text: #333;
     margin-top: 0.5em;
     margin-bottom: 2em;
     border-radius: 0.5em;
-    flex-shrink: 0; // Empêche le titre de s'écraser si manque de place
+    flex-shrink: 0;
 
     h1 {
       margin: 0;
@@ -56,24 +56,22 @@ $dark-text: #333;
 
   .error-layout {
     width: 85%;
-    flex-grow: 1; // Prend tout l'espace disponible entre le titre et le footer
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; // Centre le contenu verticalement dans l'espace restant
+    justify-content: center;
     text-align: center;
 
     .missingno-container {
       margin-bottom: 2.5em;
-      filter: drop-shadow(0 0 10px rgba(0,0,0,0.3)); // Ombre douce autour de l'image
+      filter: drop-shadow(0 0 10px rgba(0,0,0,0.3));
     }
 
     .missingno-image {
       width: 100px;
       height: auto;
-      // EMPÊCHE LE FLOU : Garde les pixels nets lors du redimensionnement
-      image-rendering: pixelated; 
-      // Applique l'animation de bug définie plus bas
+      image-rendering: pixelated;
       animation: missingnoGlitch 4s infinite alternate;
     }
 
@@ -86,7 +84,7 @@ $dark-text: #333;
         font-weight: 800;
         font-size: 1.4em;
         text-transform: uppercase;
-        color: #c00; // Rouge pour l'alerte MissingNo
+        color: #c00;
       }
 
       .description {
@@ -104,7 +102,7 @@ $dark-text: #333;
     justify-content: center;
     padding-top: 2.5em;
     padding-bottom: 1.5em;
-    flex-shrink: 0; // Garde les boutons intacts
+    flex-shrink: 0;
 
     .btn-grey {
       background-color: $grey-elements;
@@ -114,13 +112,12 @@ $dark-text: #333;
       font-weight: 600;
       text-transform: uppercase;
       cursor: pointer;
-      box-shadow: 0 0.2em 0 #999; // Effet 3D du bouton
+      box-shadow: 0 0.2em 0 #999;
       transition: all 0.1s;
 
       &:hover { background-color: #e0e0e0; }
 
       &:active {
-        // Effet d'enfoncement quand on clique
         transform: translateY(0.1em);
         box-shadow: 0 0.05em 0 #999;
       }
@@ -129,15 +126,14 @@ $dark-text: #333;
 }
 
 // --- Animation de Glitch ---
-// Simule un bug électronique (sauts de position, déformation et flash de couleur)
 @keyframes missingnoGlitch {
   0%   { transform: translate(0,0) skew(0deg); opacity: 1; }
-  10%  { transform: translate(-2px,1px); } // Léger décalage
+  10%  { transform: translate(-2px,1px); }
   20%  { transform: translate(2px,-1px); }
   30%  { transform: translate(0,0); }
-  31%  { transform: scale(1.1, 0.9) skew(5deg); opacity: 0.8; } // Écrasement soudain
+  31%  { transform: scale(1.1, 0.9) skew(5deg); opacity: 0.8; }
   32%  { transform: scale(1, 1) skew(0deg); opacity: 1; }
   98%  { transform: translate(0,0); }
-  99%  { transform: translate(5px, 0); filter: hue-rotate(90deg); } // Flash de couleur
+  99%  { transform: translate(5px, 0); filter: hue-rotate(90deg); }
   100% { transform: translate(0,0); filter: hue-rotate(0deg); }
 }

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
-import { FormsModule } from '@angular/forms'; // Import indispensable pour [(ngModel)]
-import { AuthService } from '../services/auth.service'; // Ajuste le chemin selon ton dossier
+import { FormsModule } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login-component',
@@ -16,7 +16,6 @@ import { AuthService } from '../services/auth.service'; // Ajuste le chemin selo
   styleUrl: './login-component.scss',
 })
 export class LoginComponent {
-  // L'objet qui va stocker les données saisies dans le HTML
   credentials = {
     email: '',
     mdp: ''

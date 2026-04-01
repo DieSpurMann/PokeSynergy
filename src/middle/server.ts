@@ -17,8 +17,8 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(morgan('dev')); // Morgan pour voir les requêtes passer
-app.use('/api', getEvoPokeRoutes); // On ajoute les routes d'évolution
+app.use(morgan('dev'));
+app.use('/api', getEvoPokeRoutes);
 app.use('/api', pokebyidRoutes);
 
 // Configuration Swagger + API
@@ -66,7 +66,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  */
 app.get('/api/pokemons', async (req, res) => {
   try {
-    // On récupère les params, avec des valeurs par défaut (Page 0, 20 Pokémon)
     const page: number = req.query['page'] ? parseInt( req.query['page'] as string) : 0;
     const limit: number = req.query['limit'] ? parseInt( req.query['limit'] as string) : 20;
 
@@ -74,8 +73,8 @@ app.get('/api/pokemons', async (req, res) => {
     console.log(`Nombre total de Pokémon en DB : ${count}`);
 
     const pokemons = await PokemonModel.find()
-      .skip(page * limit) // On saute ceux des pages précédentes
-      .limit(limit);      // On n'en prend que 'limit'
+      .skip(page * limit)
+      .limit(limit);
 
     res.json(pokemons);
   } catch (error) {
