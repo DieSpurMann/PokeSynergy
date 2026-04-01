@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
 import cors from 'cors';
 import swaggerJsdoc from 'swagger-jsdoc';
+import bcrypt from 'bcrypt';
 import { connectToDatabase, url } from '../back/database';
 import { PokemonModel } from '../back/pokemon';
 import { swaggerDocs } from './config/swagger';
@@ -86,89 +87,65 @@ app.get('/api/pokemons', async (req, res) => {
   }
 });
 
-/**
- * @openapi
- * /api/register:
- *   post:
- *     summary: Inscription d'un nouveau dresseur
- *     tags:
- *       - Auth
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               pseudo:
- *                 type: string
- *               email:
- *                 type: string
- *               mdp:
- *                 type: string
- *     responses:
- *       '201':
- *         description: Dresseur créé avec succès
- */
 app.post('/api/register', async (req, res) => {
   try {
-    const { pseudo, email, mdp } = req.body;
-    const newUser = new UserModel({ pseudo, email, mdp });
+    const { pseudo, email, mdp } = req.body; // 'mdp' arrive en clair : "Pikachu123"
+
+    // GÉNÉRATION DU HASH
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(mdp, salt); // On crée le hash ici
+
+    // CRÉATION DU MODÈLE
+    // ATTENTION : Ici, on doit utiliser 'mdp: hashedPassword' 
+    // pour écraser la valeur en clair par la valeur hashée
+    const newUser = new UserModel({ 
+      pseudo: pseudo, 
+      email: email, 
+      mdp: hashedPassword // <-- C'est CETTE ligne la plus importante
+    });
+
     await newUser.save();
+    console.log("Utilisateur créé avec hash :", hashedPassword); // Vérifie ton terminal Node !
+    
     res.status(201).json({ message: "Dresseur enregistré !" });
-  } catch (error: any) {
-    if (error.code === 11000) {
-      res.status(400).json({ error: "Email ou Pseudo déjà utilisé." });
-    } else {
-      res.status(500).json({ error: "Erreur lors de l'inscription" });
-    }
+  } catch (error) {
+    res.status(500).json({ error: "Erreur inscription" });
   }
 });
 
-/**
- * @openapi
- * /api/login:
- *   post:
- *     summary: Connexion d'un dresseur
- *     tags:
- *       - Auth
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *               mdp:
- *                 type: string
- *               uid:
- *                 type: string
- *
- *     responses:
- *       '200':
- *         description: Connexion réussie
- */
+
 app.post('/api/login', async (req, res) => {
   try {
     const { email, mdp } = req.body;
+
+    // 1. Chercher l'utilisateur par son email
     const user = await UserModel.findOne({ email: email });
 
     if (!user) {
       return res.status(404).json({ error: "Dresseur non trouvé." });
     }
 
-    
-    if (user.mdp !== mdp) {
+    // 2. COMPARER le mot de passe saisi avec le hash de la DB
+    // bcrypt.compare prend (texte_clair, hash_db)
+    const isMatch = await bcrypt.compare(mdp, user.mdp);
+
+    if (!isMatch) {
       return res.status(401).json({ error: "Mot de passe incorrect." });
     }
 
+    // 3. RENVOYER LES INFOS (dont l'ID pour ton collègue)
+    // C'est ici que ton collègue récupère le fameux _id
     return res.status(200).json({ 
       message: "Connexion réussie !", 
-      user: { pseudo: user.pseudo, email: user.email, uid: user._id } 
+      user: { 
+        uid: user._id, 
+        pseudo: user.pseudo, 
+        email: user.email 
+      } 
     });
+
   } catch (error) {
+    console.error("Erreur Login:", error);
     return res.status(500).json({ error: "Erreur lors de la connexion." });
   }
 });
