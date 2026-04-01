@@ -16,12 +16,24 @@ header {
   font-family: 'Poppins', sans-serif;
 }
 
+p {
+  font-family: 'PoppinsLight', sans-serif;
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+}
+
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
   height: 100%;
-  box-sizing: border-box;
+  width: 100%;
+  background-color: #f5f7fa; // Ou la couleur de ton choix pour éviter le flash blanc
+}
+
+* {
+  box-sizing: border-box; // Empêche le padding de rajouter de la largeur/hauteur
 }
 
 app-root {

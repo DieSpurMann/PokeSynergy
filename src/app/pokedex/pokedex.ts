@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-pokedex',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DragDropModule],
   templateUrl: './pokedex.html',
   styleUrl: './pokedex.scss',
 })
