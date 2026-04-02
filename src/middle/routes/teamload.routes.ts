@@ -54,10 +54,10 @@ router.get('/teams', async (req, res) => {
     const count = await TeamModel.countDocuments();
     console.log(`Nombre total de teams en DB : ${count}`);
 
-    // AJOUT DES POPULATE ICI AUSSI !
     const teams = await TeamModel.find()
-      .populate('user', 'pseudo') // Pour avoir le nom du dresseur
-      .populate('pokemons')       // Pour avoir les images et noms des pokés
+      .sort({ date: -1 })
+      .populate('user', 'pseudo')
+      .populate('pokemons')
       .skip(page * limit)
       .limit(limit).populate('pokemons');       
 
