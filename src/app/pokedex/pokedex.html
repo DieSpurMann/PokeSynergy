@@ -1,27 +1,44 @@
+<div class="search-box">
+  <div class="search-wrapper">
+    <input 
+      type="text" 
+      placeholder="Chercher un Pokémon..." 
+      [ngModel]="searchTerm()" 
+      (ngModelChange)="searchTerm.set($event)"
+    />
+
+<select [ngModel]="selectedType()" (ngModelChange)="selectedType.set($event)">
+    <option value="">Tous les types</option>
+    @for (t of pokemonTypes; track t) {
+      <option [value]="t">{{t}}</option>
+    }
+</select>
+  </div>
+</div>
+
 <div class="pokemon-container">
   <ul 
     cdkDropList 
     #pokedexList="cdkDropList"
     [cdkDropListConnectedTo]="['teamList']" 
-    [cdkDropListData]="pokemonList()">
+    [cdkDropListData]="filteredPokemonList()">
     
-    @for (p of pokemonList(); track p._id) {
-      <li 
-        (click)="onPokemonClick(p)" 
-        style="cursor: pointer;"
-        cdkDrag
-        [cdkDragData]="p"> <img [src]="p.img" [alt]="p.name" class="pokeimg">
+    @for (p of filteredPokemonList(); track p._id) {
+      <li (click)="onPokemonClick(p)" style="cursor: pointer;" cdkDrag [cdkDragData]="p"> 
+        <img [src]="p.img" [alt]="p.name" class="pokeimg">
         <br/>
         <span>{{ p.name }}</span>
-
         <div class="poke-placeholder" *cdkDragPlaceholder></div>
       </li>
     }
   </ul>
 
-  <div #scrollSentinel class="sentinel">
+  <div #scrollSentinel class="sentinel" style="height: 100px; width: 100%; display: flex; justify-content: center; align-items: center;">
     @if (isLoading) {
-      <div class="loader">Loading more Pokémon...</div>
+      <div class="loader">Recherche dans les archives (Page {{page}})...</div>
+    }
+    @if (allLoaded && filteredPokemonList().length === 0) {
+      <div class="no-results">Aucun Pokémon trouvé pour "{{searchTerm()}}"</div>
     }
   </div>
 </div>

@@ -21,4 +21,8 @@ export class PokemonService {
   getPokemonById(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/id/${id}`);
   }
+
+  searchPokemons(name: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/search?name=${name}`);
+  }
 }

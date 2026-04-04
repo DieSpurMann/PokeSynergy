@@ -1,16 +1,14 @@
 // pokedex.scss
 
 .pokemon-container {
-  max-width: 1200px; // Centers the grid on large screens
+  max-width: 1200px;
   padding: 20px;
   background-color: #D4E3FC;
   
-
   ul {
     display: grid;
-    // This creates exactly 5 columns of equal width
     grid-template-columns: repeat(6, 1fr); 
-    gap: 20px; // Space between the cards
+    gap: 20px;
     list-style: none;
     padding: 0;
 
@@ -29,8 +27,8 @@
 
       .pokeimg {
         width: 100%;
-        max-height: 128px; // Limits the height of the image
-        max-width: 128px; // Keeps sprites from getting too huge
+        max-height: 128px;
+        max-width: 128px;
         display: block;
         margin: 0 auto 10px;
       }
@@ -42,10 +40,54 @@
         color: #333;
       }
     }
+    
   }
 }
 
-// Responsive: Drop to 3 per line on tablets, 2 on mobile
+
+.search-box {
+  width: 100%;
+  background-color: #D4E3FC;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+
+  .search-wrapper {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+
+    input {
+      flex: 2;
+      padding: 10px 15px;
+      border-radius: 20px;
+      border: 2px solid #333;
+      outline: none;
+    }
+
+    select {
+      flex: 1;
+      padding: 10px;
+      border-radius: 20px;
+      border: 2px solid #333;
+      background: white;
+      cursor: pointer;
+      outline: none;
+
+      &:focus {
+        border-color: #ffcb05;
+      }
+    }
+  }
+}
+
+
+
+
 @media (max-width: 1024px) {
   .pokemon-container ul {
     grid-template-columns: repeat(3, 1fr);
