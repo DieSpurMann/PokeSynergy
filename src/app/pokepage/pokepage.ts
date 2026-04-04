@@ -22,18 +22,23 @@ export class Pokepage implements OnInit {
   evolutionChain = signal<any[]>([]);
 
   ngOnInit() {
-    // 1. Récupérer l'ID de l'URL
-    const id: string = this.route.snapshot.paramMap.get('id') || '';
+  this.route.paramMap.subscribe(params => {
+    const id = params.get('id');
     
     if (id) {
-      // 2. Charger le Pokémon principal
-      this.pokemonService.getPokemonById(+id).subscribe(data => {
-        this.pokemon.set(data);
-        
-        // 3. Charger sa famille (en utilisant la logique de pré-évo 'family')
-        this.loadEvolutionChain(+id);
-      });
+      this.pokemon.set(null);
+      this.evolutionChain.set([]);
+
+      this.loadPokemonData(+id);
     }
+  });
+}
+
+  loadPokemonData(id: number) {
+    this.pokemonService.getPokemonById(id).subscribe(data => {
+      this.pokemon.set(data);
+      this.loadEvolutionChain(id);
+    });
   }
 
   loadEvolutionChain(id: number) {
