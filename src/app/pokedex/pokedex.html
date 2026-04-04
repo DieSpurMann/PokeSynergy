@@ -25,7 +25,13 @@
     
     @for (p of filteredPokemonList(); track p._id) {
       <li (click)="onPokemonClick(p)" style="cursor: pointer;" cdkDrag [cdkDragData]="p"> 
-        <img [src]="p.img" [alt]="p.name" class="pokeimg">
+        <img 
+          #img
+          [src]="p.img" 
+          [alt]="p.name" 
+          class="pokeimg"
+          (error)="img.src = 'images/missing.png'" 
+        >
         <br/>
         <span>{{ p.name }}</span>
         <div class="poke-placeholder" *cdkDragPlaceholder></div>

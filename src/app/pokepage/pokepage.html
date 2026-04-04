@@ -2,7 +2,8 @@
   
   @if (pokemon(); as p) {
     <div class="main-card">
-      <img [src]="p.img" [alt]="p.name" class="main-sprite">
+      <img #mainImg [src]="p.img" [alt]="p.name" class="main-sprite" (error)="mainImg.src = 'images/missing.png'"
+  >
       <h1>{{ capitalize(p.name) }}</h1>
       <h2>N°{{ p.pokedexnumber }}</h2>
       <div class="types">
@@ -26,7 +27,8 @@
         <div class="evo-row">
           @for (evo of evolutionChain(); track evo._id) {
             <div class="evo-node" (click)="onEvolutionClick(evo)" style="cursor: pointer;">
-              <img [src]="evo.img" [alt]="evo.name">
+              <img #evoImg [src]="evo.img" [alt]="evo.name" (error)="evoImg.src = 'images/missing.png'"
+    >
               <p>{{ capitalize(evo.name) }}</p>
             </div>
             @if (!$last) { <span class="arrow">➔</span> }
