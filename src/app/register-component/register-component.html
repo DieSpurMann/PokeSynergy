@@ -1,0 +1,39 @@
+<div class="login-wrapper">
+  <div class="login-column">
+    
+    <div class="title-container">
+      <h1>INSCRIPTION</h1>
+    </div>
+
+    <form class="form-content" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <label for="username">NOM DE DRESSEUR</label>
+        <input type="text" id="username" name="username" [(ngModel)]="dresseur.pseudo" placeholder="Ex: Sacha02" required>
+      </div>
+
+      <div class="input-group">
+        <label for="email">ADRESSE EMAIL</label>
+        <input type="email" id="email" name="email" [(ngModel)]="dresseur.email" placeholder="pika@pemail.com" required>
+      </div>
+
+      <div class="input-group">
+        <label for="password">MOT DE PASSE</label>
+        <input type="password" id="password" name="password" [(ngModel)]="dresseur.password" placeholder="********" required>
+      </div>
+
+      <div class="input-group">
+        <label for="confirm">CONFIRMER LE MOT DE PASSE</label>
+        <input type="password" id="confirm" name="confirm" [(ngModel)]="dresseur.confirmPassword" placeholder="********" required>
+      </div>
+
+      <div class="button-footer">
+        <button type="submit" class="btn-grey">Créer mon compte</button>
+        
+        <p class="switch-link">
+          Déjà dresseur ? <a routerLink="/login">Connecte-toi !</a>
+        </p>
+      </div>
+    </form>
+
+  </div>
+</div>

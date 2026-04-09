@@ -1,0 +1,24 @@
+// app/dexteam/dexteam.scss
+
+.dexteam-wrapper {
+  display: flex;
+  align-items: flex-start; // INDISPENSABLE : permet aux enfants d'avoir leur propre hauteur
+  gap: 0;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0;
+}
+
+app-pokedex {
+  flex: 1;
+  width: 70%;
+}
+
+app-team-component {
+  width: 40%;
+  height: 100vh;
+  padding: 20px;
+  display: block; 
+  background: #FEFCE0;
+}

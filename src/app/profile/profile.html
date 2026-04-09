@@ -1,0 +1,56 @@
+<div class="profile-container">
+  <div class="trainer-card">
+    
+    <div class="card-header">
+      <span class="card-title">CARTE DE DRESSEUR</span>
+      <span class="card-id">ID: #00{{ dresseur?.pseudo?.length || '00' }}</span>
+    </div>
+
+    <div class="card-content">
+      <div class="avatar-section">
+        <div class="avatar-frame">
+          <img [src]="dresseur?.avatarUrl || 'images/pp-default.png'" alt="Avatar dresseur">
+        </div>
+        
+        <div class="badges-container">
+          <div class="badges-row">
+            <div class="badge-slot earned"></div>
+            <div class="badge-slot earned"></div>
+            <div class="badge-slot earned"></div>
+            <div class="badge-slot"></div>
+          </div>
+          <div class="badges-row">
+            <div class="badge-slot"></div>
+            <div class="badge-slot"></div>
+            <div class="badge-slot"></div>
+            <div class="badge-slot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <div class="info-group">
+          <label>NOM / PSEUDO</label>
+          <p class="info-value">{{ dresseur?.pseudo || '---' }}</p>
+        </div>
+
+        <div class="info-group">
+          <label>E-MAIL ENREGISTRÉ</label>
+          <p class="info-value email-text">{{ dresseur?.email || 'non renseigné' }}</p>
+        </div>
+        
+        <div class="info-group">
+          <label>RANG</label>
+          <p class="info-value rank-text">Dresseur Novice</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <button class="btn-logout" (click)="logout()">
+        QUITTER LA SESSION
+      </button>
+    </div>
+
+  </div>
+</div>

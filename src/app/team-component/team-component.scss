@@ -1,0 +1,164 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('../../assets/fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:host {
+  display: block; // Important pour le sticky
+  position: sticky;
+  top: 20px;
+}
+
+.team-name-container {
+  margin-bottom: 15px;
+
+  .team-name-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background: rgba(255, 255, 255, 0.5);
+
+    &:focus {
+      border-color: #ff1f1f; // Rouge Pokémon au clic
+      background: white;
+    }
+  }
+}
+
+#team-component {
+  width: 280px;
+  background: #FEFCE0;
+  backdrop-filter: blur(12px); // Effet flou transparent
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 200px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+
+  #team-header {
+    color: #333;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ff1f1f; // Rouge Pokémon
+    padding-bottom: 10px;
+  }
+}
+
+.actions-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
+  .save-button {
+    width: 100%;
+    padding: 12px;
+    background: #4CAF50; // Vert succès
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+
+    &:hover:not(:disabled) {
+      background: #45a049;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+}
+
+/* src/app/team-component/team-component.scss */
+.team-selector-container {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  label {
+    font-size: 0.8rem;
+    color: #666;
+    font-weight: bold;
+  }
+
+  .showdown-select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+
+    &:focus {
+      border-color: #ff1f1f;
+      outline: none;
+    }
+  }
+}
+
+.pokeslot {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+  padding: 8px 15px;
+  height: 60px;
+  background: rgba(240, 240, 240, 0.5);
+  border-radius: 12px;
+  border: 2px dashed #ccc;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #ff1f1f;
+    transform: scale(1.02);
+  }
+
+  &.filled {
+    border: 2px solid #4CAF50; // Vert si occupé
+    background: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  .pokesprite {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+  }
+
+  .nom-pkmn {
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #444;
+    text-transform: capitalize;
+  }
+}
+
+// L'animation quand on survole avec un Pokémon
+.cdk-drop-list-receiving {
+  background: rgba(255, 31, 31, 0.1) !important;
+  border: 2px solid #ff1f1f !important;
+}

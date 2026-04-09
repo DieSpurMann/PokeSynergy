@@ -1,0 +1,54 @@
+<div id="team-component" 
+     cdkDropList 
+     id="teamList" 
+     [cdkDropListData]="selectedPokemons" 
+     (cdkDropListDropped)="onDrop($event)">
+
+	 <div class="team-name-container">
+        <input type="text" 
+               [(ngModel)]="teamName" 
+               placeholder="Nom de l'équipe..." 
+               class="team-name-input">
+    </div>
+     
+	<div class="saved-teams-container">
+    <h3>Mes Équipes Enregistrées</h3>
+    
+    @if (myTeams.length === 0) {
+      <p>Aucune équipe trouvée.</p>
+    }
+
+    <div class="team-selector-container">
+        <label for="team-select">Choisir une équipe :</label>
+        <select id="team-select" (change)="onTeamSelected($event)" class="showdown-select">
+            <option value="">-- Nouvelle Équipe --</option>
+            @for (team of myTeams; track team._id) {
+                <option [value]="team._id">{{ team.name }}</option>
+            }
+        </select>
+    </div>
+
+    <h2 id="team-header">Équipe ({{selectedPokemons.length}}/6)</h2>
+
+    @for (slot of [0, 1, 2, 3, 4, 5]; track slot) {
+        <div class="pokeslot">
+            @if (selectedPokemons[slot]) {
+                <img class="pokesprite" [src]="selectedPokemons[slot].img" [alt]="selectedPokemons[slot].name">
+                <p class="nom-pkmn">{{ selectedPokemons[slot].name }}</p>
+                <button (click)="retirerPokemon(slot)" style="color: red;">X</button>
+            } @else {
+                <img class="pokesprite" alt="Vide" style="opacity: 0.3;">
+                <p class="nom-pkmn">Pokéslot {{ slot + 1 }} (Vide)</p>
+            }
+        </div>
+        <br>
+    }
+
+	<div class="actions-container">
+        <button class="save-button" 
+                (click)="saveTeam()" 
+                [disabled]="selectedPokemons.length === 0">
+            💾 Enregistrer l'Équipe
+        </button>
+    </div>
+</div>

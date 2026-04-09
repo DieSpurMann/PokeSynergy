@@ -1,0 +1,164 @@
+$pokesyn-blue: #3E70CD;
+$pokesyn-yellow: #FEFCE0;
+$dark-text: #333;
+
+:host {
+    display: block;
+    min-height: 100vh;
+    background-color: #D4E3FC;
+}
+
+.pokepage-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 6em 2em 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    font-family: 'Inter', sans-serif;
+}
+
+/* --- CARTE PRINCIPALE --- */
+.main-card {
+    background: white;
+    border-radius: 20px;
+    padding: 3em;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 5px solid $pokesyn-blue;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        width: 200px;
+        height: 200px;
+        background: rgba($pokesyn-blue, 0.05);
+        border-radius: 50%;
+    }
+
+    .main-sprite {
+        width: 200px;
+        height: auto;
+        filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+        animation: float 3s ease-in-out infinite;
+        image-rendering: pixelated;
+    }
+
+    h1 {
+        font-family: Poppins, cursive;
+        color: $pokesyn-blue;
+        font-size: 3rem;
+        margin: 0.2em 0;
+    }
+
+    h2 {
+        color: #999;
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-bottom: 1em;
+        font: Poppins;
+    }
+
+    .types {
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+
+        .type-badge {
+            transition: transform 0.2s;
+            &:hover { transform: translateY(-3px); }
+            
+            .type-logo {
+                height: 2.5em;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            }
+        }
+    }
+}
+
+/* --- SECTIONS D'INFO --- */
+.info-section, .family-section {
+    background: rgba(white, 0.7);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 1.5em 2em;
+    border-left: 6px solid $pokesyn-blue;
+
+    h2 {
+        font-family: Poppins, cursive;
+        color: $pokesyn-blue;
+        margin-bottom: 0.8em;
+        font-size: 1.8rem;
+    }
+
+    p {
+        line-height: 1.6;
+        font-size: 1.1rem;
+        color: $dark-text;
+        font-family: PoppinsLight;
+        strong { color: $pokesyn-blue; }
+    }
+}
+
+/* --- LIGNÉE ÉVOLUTIVE --- */
+.family-section {
+    .evo-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+
+    .evo-node {
+        text-align: center;
+        transition: all 0.3s ease;
+        padding: 10px;
+        border-radius: 12px;
+
+        img {
+            width: 100px;
+            height: auto;
+            image-rendering: pixelated;
+        }
+
+        p {
+            font-weight: bold;
+            margin-top: 5px;
+            color: $pokesyn-blue;
+            font-family: PoppinsLight;
+        }
+
+        &:hover {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: scale(1.05);
+        }
+    }
+
+    .arrow {
+        font-size: 2rem;
+        color: $pokesyn-blue;
+        font-weight: bold;
+        opacity: 0.5;
+    }
+}
+
+/* --- ANIMATIONS --- */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 600px) {
+    .pokepage-wrapper { padding-top: 5em; }
+    .main-card h1 { font-size: 2rem; }
+    .evo-row { flex-direction: column; }
+    .arrow { transform: rotate(90deg); margin: 10px 0; }
+}

@@ -1,0 +1,43 @@
+<div class="pokepage-wrapper">
+  
+  @if (pokemon(); as p) {
+    <div class="main-card">
+      <img #mainImg [src]="p.img" [alt]="p.name" class="main-sprite" (error)="mainImg.src = 'images/missing.png'"
+  >
+      <h1>{{ capitalize(p.name) }}</h1>
+      <h2>N°{{ p.pokedexnumber }}</h2>
+      <div class="types">
+          @for (type of p.type; track type) {
+          <div class="type-badge">
+            <img [src]="type | typeLogo" [alt]="type" class="type-logo">
+          </div>
+        }
+      </div>
+
+    </div>
+
+    <div class="info-section">
+      <h2>Informations</h2>
+      <p><strong>Description:</strong> {{ p.desc }}</p>
+    </div>
+
+    @if (evolutionChain().length > 0) {
+      <div class="family-section">
+        <h2>Lignée Évolutive</h2>
+        <div class="evo-row">
+          @for (evo of evolutionChain(); track evo._id) {
+            <div class="evo-node" (click)="onEvolutionClick(evo)" style="cursor: pointer;">
+              <img #evoImg [src]="evo.img" [alt]="evo.name" (error)="evoImg.src = 'images/missing.png'"
+    >
+              <p>{{ capitalize(evo.name) }}</p>
+            </div>
+            @if (!$last) { <span class="arrow">➔</span> }
+          }
+        </div>
+      </div>
+    }
+  } @else {
+    <div class="loader">Chargement du Pokémon...</div>
+  }
+
+</div>

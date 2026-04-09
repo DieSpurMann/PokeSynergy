@@ -1,0 +1,28 @@
+<div class="login-wrapper">
+  <div class="login-column">
+    
+    <div class="title-container">
+      <h1>CONNEXION</h1>
+    </div>
+
+    <form class="form-content" (ngSubmit)="onLogin()">
+      <div class="input-group">
+        <label for="email">ADRESSE EMAIL</label>
+        <input type="email" id="email" name="email" [(ngModel)]="credentials.email" placeholder="pika@pemail.com" required>
+      </div>
+
+      <div class="input-group">
+        <label for="password">MOT DE PASSE</label>
+        <input type="password" id="password" name="password" [(ngModel)]="credentials.mdp" placeholder="********" required>
+      </div>
+
+      <div class="button-footer">
+        <button type="submit" class="btn-grey">Se connecter</button>
+        <div class="register-link">
+          <p>Nouveau dresseur ? <a routerLink="/register">Crée ton compte ici !</a></p>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

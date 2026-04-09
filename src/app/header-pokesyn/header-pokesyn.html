@@ -1,0 +1,31 @@
+<div class="header-pokesyn">
+    <img src="images/pokesynergy.png" alt="PokéSynergy Logo" class="logo" routerLink="/pokedex">
+    <img src="images/pokesynergytitle.png" alt="PokéSynergy Title" class="title" routerLink="/pokedex">
+
+    <div class="right-actions">
+        <a *ngIf="isLoggedIn()" routerLink="/profile" class="profile-link">
+            <img src="images/pp-default.png" alt="Profil" class="profile-pic" routerLink="/login">
+        </a>
+
+        <a *ngIf="!isLoggedIn()" routerLink="/login" class="login-button">
+            <img src="images/pp-default.png" alt="Profil" class="profile-pic" routerLink="/login">
+        </a>
+
+        <button class="burger-btn" (click)="toggleMenu()" [class.open]="isMenuOpen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <nav class="nav-menu" [class.show]="isMenuOpen">
+        @if (isLoggedIn()) {
+            <a routerLink="/profile" (click)="toggleMenu()">Profil</a>
+        } @else {
+            <a routerLink="/login" (click)="toggleMenu()">Profil</a>
+        }
+        <a routerLink="/feed" (click)="toggleMenu()">Feed</a>
+        <a routerLink="/pokedex" (click)="toggleMenu()">Équipes</a>
+        <a routerLink="/erreur-404" (click)="toggleMenu()">Réglages</a>
+    </nav>
+</div>
