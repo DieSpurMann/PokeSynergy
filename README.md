@@ -12,10 +12,6 @@ curl -fsSL https://get.pnpm.io/install.sh | sh -
 
 ### Ensuite pour faire fonctioner la partie API il faut:
 - Créer un fichier de configuration <b>utils.conf</b> avec en contenu:
-```
-DBLINK=mongodb+srv://user:ceciestunmotdepasse@pokesynergy.tsy15x6.mongodb.net/?appName=PokeSynergy
-PORT=3000
-```
 - Installer toutes les dépendences
 ```bash
 pnpm install
